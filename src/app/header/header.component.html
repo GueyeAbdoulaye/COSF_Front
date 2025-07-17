@@ -1,21 +1,21 @@
-<div class="bg-slate-950 text-white p-2">
+<div class="bg-black text-white p-4 shadow-md">
   <div class="flex items-center justify-between">
     <!-- Left side - Menu burger -->
-    <div class="flex gap-5 items-center space-x-6">
+    <div class="flex gap-5 items-center  space-x-6">
       <div class="flex items-center justify-center cursor-pointer">
         <ng-icon hlm size='lg' name="lucideMenu" />
       </div>
       
       <!-- Menu items -->
       <nav class="hidden md:flex space-x-6 text-lg font-bold">
-        <div class="cursor-pointer hover:text-gray-300 transition-colors">Calendrier</div>
-        <div class="cursor-pointer hover:text-gray-300 transition-colors">Classement</div>
+        <div class="cursor-pointer hover:text-gray-300 transition-colors" [routerLink]="['/calendrier']" routerLinkActive="text-gray-300">Calendrier</div>
+        <div class="cursor-pointer hover:text-gray-300 transition-colors" [routerLink]="['/classement']" routerLinkActive="text-gray-300">Classement</div>
       </nav>
     </div>
 
     <!-- Center - Logo and club name -->
-    <div class="flex flex-col items-center justify-center mr-48 cursor-pointer">
-      <img src="/images/cosf_logo.jpeg" class="w-20 h-20  rounded-full" />
+    <div class="flex  items-center justify-center mr-48 cursor-pointer" [routerLink]="['/']">
+      <img src="/images/cosf_logo.jpeg" class="w-16 h-16  rounded-full" />
 
       <h1 class="text-1xl font-bold">COSF</h1>
     </div>

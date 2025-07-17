@@ -1,3 +1,3 @@
-export interface CosfTeams {
+export interface Teams {
     name: string;
 }

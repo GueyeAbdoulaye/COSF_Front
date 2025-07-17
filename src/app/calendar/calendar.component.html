@@ -1,0 +1,11 @@
+@for (item of calendars; track $index) {
+
+    <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+        <h2 class="text-xl font-bold mb-2">Match {{ item.id }}</h2>
+        <p><strong>Date:</strong> {{ item.matchDate }}</p>
+        <p><strong>Location:</strong> {{ item.location }}</p>
+        <p><strong>Score:</strong> {{ item.scoreHome }} - {{ item.scoreAway }}</p>
+        <p><strong>Journeys:</strong> {{ item.journeys }}</p>
+    
+    </div>
+}

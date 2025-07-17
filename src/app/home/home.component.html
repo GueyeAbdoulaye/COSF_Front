@@ -1,0 +1,190 @@
+<div class="flex flex-col gap-16">
+  <!-- Image Gallery Section -->
+  <app-image-gallery></app-image-gallery>
+  
+  <div>
+    @if (isLastMatch) {
+    <div class="">
+      <h2 class="text-3xl font-serif mb-4 text-center justify-center p-4">
+        Dernier Match
+      </h2>
+      <div
+        class="flex bg-gray-300 text-white rounded-lg overflow-hidden shadow-lg w-full max-w-7xl mx-auto">
+        <!-- Date -->
+        <div class="flex flex-col w-1/4">
+          <div
+            class="flex flex-col bg-black text-white text-center justify-center items-center p-4">
+            <div
+              class="flex flex-row items-center justify-center w-full flex-1">
+              <img src="/images/ffbb.jpg" class="w-12 h-12 rounded-full" />
+              <h2 class="font-serif font-bold ml-2">FFBB</h2>
+            </div>
+          </div>
+          <div
+            class="bg-white text-black font-serif text-center justify-center items-center p-4">
+            <div
+              class="text-2xl font-bold mt-2 flex-1 flex items-center justify-center">
+              {{ calendarLastMatch?.matchDate | date : "dd/MM/yyyy" }}
+            </div>
+            <div
+              class="text-2xl font-bold mt-2 flex-1 flex items-center justify-center">
+              {{ calendarLastMatch?.matchDate | date : "HH:mm" }}
+            </div>
+          </div>
+        </div>
+
+        <!-- game daye -->
+        <div class="flex items-center justify-evenly w-2/3">
+          <!-- if Cosf play home -->
+          @if (calendarLastMatch?.location==="Domicile") {
+
+          <img
+            [src]="'/images/cosf_logo.jpeg'"
+            class="w-16 h-16 rounded-full" />
+
+          <div class="font-serif text-black text-4xl font-bold">
+            {{ calendarLastMatch?.scoreHome }}
+          </div>
+
+          <div class="text-black font-serif text-2xl font-bold mx-4">VS</div>
+
+          <div class="font-serif text-black text-4xl font-bold">
+            {{ calendarLastMatch?.scoreAway }}
+          </div>
+
+          <img
+            [src]="
+              nameTeam && nameTeam.name
+                ? '/images/' + nameTeam.name + '.png'
+                : ''
+            "
+            alt="{{ nameTeam?.name || '' }}"
+            class="w-24 h-24 rounded-full" />
+          }
+
+          <!-- if Cosf play away -->
+
+          @if (calendarLastMatch?.location==="Extérieur") {
+
+          <img
+            [src]="
+              nameTeam && nameTeam.name
+                ? '/images/' + nameTeam.name + '.png'
+                : ''
+            "
+            alt="{{ nameTeam?.name || '' }}"
+            class="w-24 h-24 rounded-full" />
+
+          <div class="font-serif text-black text-4xl font-bold">
+            {{ calendarLastMatch?.scoreAway }}
+          </div>
+
+          <div class="text-black font-serif text-2xl font-bold mx-4">VS</div>
+
+          <div class="font-serif text-black text-4xl font-bold">
+            {{ calendarLastMatch?.scoreHome }}
+          </div>
+
+          <img
+            [src]="'/images/cosf_logo.jpeg'"
+            class="w-24 h-24 rounded-full" />
+          }
+        </div>
+      </div>
+    </div>
+    } @if (isNextMatch) {
+    <div class="">
+      <h2 class="text-3xl font-serif mb-4 text-center justify-center p-4">
+        Prochain Match
+      </h2>
+      <div
+        class="flex bg-gray-300 text-white rounded-lg overflow-hidden shadow-lg w-full max-w-7xl mx-auto">
+        <!-- Date -->
+        <div class="flex flex-col w-1/4">
+          <div
+            class="flex flex-col bg-black text-white text-center justify-center items-center p-4">
+            <div
+              class="flex flex-row items-center justify-center w-full flex-1">
+              <img src="/images/ffbb.jpg" class="w-12 h-12 rounded-full" />
+              <h2 class="font-serif font-bold ml-2">FFBB</h2>
+            </div>
+          </div>
+          <div
+            class="bg-white text-black font-serif text-center justify-center items-center p-4">
+            <div
+              class="text-2xl font-bold mt-2 flex-1 flex items-center justify-center">
+              {{ calendarNextMatch?.matchDate | date : "dd/MM/yyyy" }}
+            </div>
+            <div
+              class="text-2xl font-bold mt-2 flex-1 flex items-center justify-center">
+              {{ calendarNextMatch?.matchDate | date : "HH:mm" }}
+            </div>
+          </div>
+        </div>
+
+        <!-- game day -->
+        <div class="flex items-center justify-evenly w-2/3">
+          <!-- if Cosf play home -->
+          @if (calendarNextMatch?.location==="Domicile") {
+
+          <img
+            [src]="'/images/cosf_logo.jpeg'"
+            class="w-16 h-16 rounded-full" />
+
+          <div class="text-black font-serif text-2xl font-bold mx-4">VS</div>
+
+          <img
+            [src]="
+              nameTeam && nameTeam.name
+                ? '/images/' + nameTeam.name + '.png'
+                : ''
+            "
+            alt="{{ nameTeam?.name || '' }}"
+            class="w-24 h-24 rounded-full" />
+          }
+
+          <!-- if Cosf play away -->
+
+          @if (calendarNextMatch?.location==="Extérieur") {
+
+          <img
+            [src]="
+              nameTeam && nameTeam.name
+                ? '/images/' + nameTeam.name + '.png'
+                : ''
+            "
+            alt="{{ nameTeam?.name || '' }}"
+            class="w-24 h-24 rounded-full" />
+
+          <div class="text-black font-serif text-2xl font-bold mx-4">VS</div>
+
+          <img
+            [src]="'/images/cosf_logo.jpeg'"
+            class="w-24 h-24 rounded-full" />
+          }
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div
+    class="bg-gray-200 flex flex-col gap-14 w-full items-center justify-center h-full p-5">
+    <div class="font-serif text-5xl">
+      <span class="font-bold"> SUIVEZ-NOUS</span>
+      <span> SUR LES RESEAUX SOCIAUX</span>
+    </div>
+    <div>
+      <a
+        href="https://www.instagram.com/cosf_basket/"
+        target="_blank"
+        class="cursor-pointer">
+        <img src="/images/instagram.jpeg" class="w-10 h-10 mr-4 rounded-full" />
+      </a>
+    </div>
+    <div>
+      <img src="/images/cosf_pp.jpg" alt="" class="max-h-[500px] w-full" />
+    </div>
+  </div>
+  
+</div>
