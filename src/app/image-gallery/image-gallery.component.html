@@ -1,3 +1,6 @@
 <div class="bg-black">
-  <img src="/images/logo_basket1.png" alt="" class="max-h-[500px] w-full ">
+  <img [src]="
+              name 
+                ? '/images/' + name + '.png'
+                : ''" alt="" class="max-h-[300px] w-full ">
 </div>

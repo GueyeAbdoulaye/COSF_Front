@@ -13,14 +13,14 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatIconModule, HeaderComponent, ImageGalleryComponent, HomeComponent, FooterComponent,  RouterOutlet],
+  imports: [CommonModule, MatToolbarModule, MatIconModule, HeaderComponent, FooterComponent,  RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent  {
   public teams: String[] = [];
 
-  constructor(private cosfTeamsService: CosfService) {}
+  constructor() {}
 
   
 }

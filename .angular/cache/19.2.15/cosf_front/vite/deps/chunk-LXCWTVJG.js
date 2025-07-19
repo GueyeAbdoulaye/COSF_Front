@@ -1,10 +1,10 @@
 import {
   BidiModule
-} from "./chunk-X2VJQMUT.js";
+} from "./chunk-36M5H7T5.js";
 import {
   DOCUMENT,
   isPlatformBrowser
-} from "./chunk-XWWR74KO.js";
+} from "./chunk-7U3LORDI.js";
 import {
   APP_ID,
   ApplicationRef,
@@ -55,7 +55,7 @@ import {
   ɵɵdefineInjectable,
   ɵɵdefineInjector,
   ɵɵdefineNgModule
-} from "./chunk-GQCRKYRD.js";
+} from "./chunk-YPVXV7KQ.js";
 import {
   __spreadValues
 } from "./chunk-WDMUDEB6.js";
@@ -120,6 +120,20 @@ var Platform = class _Platform {
     }]
   }], () => [], null);
 })();
+
+// node_modules/@angular/cdk/fesm2022/element-x4z00URv.mjs
+function coerceNumberProperty(value, fallbackValue = 0) {
+  if (_isNumberValue(value)) {
+    return Number(value);
+  }
+  return arguments.length === 2 ? fallbackValue : 0;
+}
+function _isNumberValue(value) {
+  return !isNaN(parseFloat(value)) && !isNaN(Number(value));
+}
+function coerceElement(elementOrRef) {
+  return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
+}
 
 // node_modules/@angular/cdk/fesm2022/fake-event-detection-DWOdFTFz.mjs
 function isFakeMousedownFromScreenReader(event) {
@@ -204,20 +218,6 @@ function supportsPassiveEventListeners() {
 }
 function normalizePassiveListenerOptions(options) {
   return supportsPassiveEventListeners() ? options : !!options.capture;
-}
-
-// node_modules/@angular/cdk/fesm2022/element-x4z00URv.mjs
-function coerceNumberProperty(value, fallbackValue = 0) {
-  if (_isNumberValue(value)) {
-    return Number(value);
-  }
-  return arguments.length === 2 ? fallbackValue : 0;
-}
-function _isNumberValue(value) {
-  return !isNaN(parseFloat(value)) && !isNaN(Number(value));
-}
-function coerceElement(elementOrRef) {
-  return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
 }
 
 // node_modules/@angular/cdk/fesm2022/focus-monitor-e2l_RpN3.mjs
@@ -2871,6 +2871,9 @@ var MatCommonModule = class _MatCommonModule {
 
 export {
   Platform,
+  coerceNumberProperty,
+  _isNumberValue,
+  coerceElement,
   MatCommonModule
 };
-//# sourceMappingURL=chunk-BBXWA7LC.js.map
+//# sourceMappingURL=chunk-LXCWTVJG.js.map

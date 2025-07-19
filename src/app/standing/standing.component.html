@@ -1,1 +1,160 @@
-//on verra apres
+<div class="w-full">
+  <app-image-gallery [name]="nameLogo"></app-image-gallery>
+</div>
+
+<div
+  class="flex flex-col gap-4 sm:gap-8 justify-center items-center p-2 sm:p-4 w-full">
+  <h2
+    class="font-serif font-bold text-black text-2xl sm:text-3xl mb-4 sm:mb-6 text-center">
+    Classement
+  </h2>
+
+  <div
+    class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-2 sm:mt-4 w-full max-w-4xl">
+    <button
+      class="bg-black font-serif font-bold text-white text-sm sm:text-lg px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto"
+      (click)="getStandingBySeason(1)">
+      Poule Basse
+    </button>
+    <button
+      class="bg-black font-serif font-bold text-white text-sm sm:text-lg px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto"
+      (click)="getStandingBySeason(2)">
+      Poule Haute
+    </button>
+  </div>
+
+  <div class="w-full flex justify-center px-2 sm:px-4">
+    <div
+      class="overflow-hidden rounded-2xl shadow-lg max-w-8xl w-full overflow-x-auto mb-8">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="bg-gray-100 font-bold text-center border-r border-gray-200 px-2 py-3">
+            No.
+          </th>
+          <td
+            class="font-bold text-center border-r border-gray-200 py-3 px-2"
+            mat-cell
+            *matCellDef="let element; let i = index">
+            {{ i + 1 }}
+          </td>
+        </ng-container>
+
+        <!-- Team Column -->
+        <ng-container matColumnDef="equipe">
+          <th mat-header-cell *matHeaderCellDef>Équipe</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="flex flex-row gap-5 items-center justify-start">
+              @if (getTeamFromCache(element.teamId)?.name && element.teamId!==2)
+              {
+              <img
+                [src]="
+                  '/images/' + getTeamFromCache(element.teamId)?.name + '.png'
+                "
+                [alt]="getTeamFromCache(element.teamId)?.name || 'Team'"
+                class="w-12 h-12 sm:w-12 sm:h-12 rounded-full" />
+              <span
+                class="text-black font-serif text-xs sm:text-sm font-bold text-center">
+                {{ getTeamFromCache(element.teamId)?.name }}
+              </span>
+              } @else {
+              <img
+                src="/images/cosf_logo.jpeg"
+                class="w-12 h-12 sm:w-12 sm:h-12 rounded-full" />
+              <span
+                class="text-black font-serif text-xs sm:text-sm font-bold text-center">
+                {{ getTeamFromCache(element.teamId)?.name }}
+              </span>
+              }
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Points -->
+        <ng-container matColumnDef="points">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="text-center">Points</div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="text-center">
+              {{ element.points }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Wins -->
+        <ng-container matColumnDef="wins">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="text-center">Victoires</div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="text-center">
+              {{ element.wins }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Losses -->
+        <ng-container matColumnDef="losses">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="text-center">Défaites</div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="text-center">
+              {{ element.losses }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- draw -->
+        <ng-container matColumnDef="draws">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="text-center">Nul</div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="text-center">
+              {{ element.draws }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Scored -->
+        <ng-container matColumnDef="pointScored">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="text-center">+</div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="text-center">
+              {{ element.pointScored }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Against -->
+        <ng-container matColumnDef="pointAgainst">
+          <th mat-header-cell *matHeaderCellDef>
+            <div class="text-center">-</div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="text-center">
+              {{ element.pointAgainst }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Header and rows -->
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+          class="border-b-2 border-gray-300"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          class="hover:bg-gray-50 transition-colors duration-200 border-b border-gray-100"></tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,166 +1,204 @@
 <div class="flex flex-col gap-16">
   <!-- Image Gallery Section -->
-  <app-image-gallery></app-image-gallery>
+  <app-image-gallery [name]="nameLogo"></app-image-gallery>
   
   <div>
     @if (isLastMatch) {
     <div class="">
-      <h2 class="text-3xl font-serif mb-4 text-center justify-center p-4">
+      <h2 class="text-2xl sm:text-3xl font-serif mb-4 text-center justify-center p-4">
         Dernier Match
       </h2>
       <div
-        class="flex bg-gray-300 text-white rounded-lg overflow-hidden shadow-lg w-full max-w-7xl mx-auto">
+        class="flex flex-col sm:flex-row bg-gray-300 text-white rounded-lg sm:rounded-full gap-0 sm:gap-3 overflow-hidden shadow-lg w-full sm:max-w-7xl mx-2 sm:mx-auto">
         <!-- Date -->
-        <div class="flex flex-col w-1/4">
+        <div class="flex flex-col w-full sm:w-1/4">
           <div
-            class="flex flex-col bg-black text-white text-center justify-center items-center p-4">
+            class="flex flex-col bg-black text-white text-center justify-center items-center p-3 sm:p-4 rounded-t-lg sm:rounded-none">
             <div
               class="flex flex-row items-center justify-center w-full flex-1">
-              <img src="/images/ffbb.jpg" class="w-12 h-12 rounded-full" />
-              <h2 class="font-serif font-bold ml-2">FFBB</h2>
+              <img src="/images/ffbb.jpg" class="w-8 h-8 sm:w-12 sm:h-12 rounded-full" />
+              <h2 class="font-serif font-bold ml-2 text-sm sm:text-base">FFBB</h2>
             </div>
           </div>
           <div
-            class="bg-white text-black font-serif text-center justify-center items-center p-4">
+            class="bg-white text-black font-serif text-center justify-center items-center p-3 sm:p-4">
             <div
-              class="text-2xl font-bold mt-2 flex-1 flex items-center justify-center">
+              class="text-lg sm:text-2xl font-bold mt-1 sm:mt-2 flex-1 flex items-center justify-center">
               {{ calendarLastMatch?.matchDate | date : "dd/MM/yyyy" }}
             </div>
             <div
-              class="text-2xl font-bold mt-2 flex-1 flex items-center justify-center">
+              class="text-lg sm:text-2xl font-bold mt-1 sm:mt-2 flex-1 flex items-center justify-center">
               {{ calendarLastMatch?.matchDate | date : "HH:mm" }}
             </div>
           </div>
         </div>
 
-        <!-- game daye -->
-        <div class="flex items-center justify-evenly w-2/3">
+        <!-- game day -->
+        <div class="flex items-center justify-center w-full sm:w-2/3 p-3 sm:p-0 bg-gray-300 rounded-b-lg sm:rounded-none">
           <!-- if Cosf play home -->
           @if (calendarLastMatch?.location==="Domicile") {
 
-          <img
-            [src]="'/images/cosf_logo.jpeg'"
-            class="w-16 h-16 rounded-full" />
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 w-full px-2 sm:px-4">
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-end">
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <img [src]="'/images/cosf_logo.jpeg'" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
+                <span class="text-black font-serif text-xs sm:text-sm font-bold text-center">COSF</span>
+              </div>
+            </div>
 
-          <div class="font-serif text-black text-4xl font-bold">
-            {{ calendarLastMatch?.scoreHome }}
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+              <div class="font-serif text-black text-xl sm:text-4xl font-bold text-center min-w-[2rem]">
+                {{ calendarLastMatch?.scoreHome }}
+              </div>
+
+              <div class="text-black font-serif text-lg sm:text-2xl font-bold">VS</div>
+
+              <div class="font-serif text-black text-xl sm:text-4xl font-bold text-center min-w-[2rem]">
+                {{ calendarLastMatch?.scoreAway }}
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-start">
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <img
+                  [src]="nameTeam && nameTeam.name ? '/images/' + nameTeam.name + '.png' : '/images/cosf_logo.jpeg'"
+                  [alt]="nameTeam?.name || 'Team'"
+                  class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
+                <span class="text-black font-serif text-xs sm:text-sm font-bold text-center">
+                  {{ nameTeam?.name || 'Équipe' }}
+                </span>
+              </div>
+            </div>
           </div>
-
-          <div class="text-black font-serif text-2xl font-bold mx-4">VS</div>
-
-          <div class="font-serif text-black text-4xl font-bold">
-            {{ calendarLastMatch?.scoreAway }}
-          </div>
-
-          <img
-            [src]="
-              nameTeam && nameTeam.name
-                ? '/images/' + nameTeam.name + '.png'
-                : ''
-            "
-            alt="{{ nameTeam?.name || '' }}"
-            class="w-24 h-24 rounded-full" />
           }
 
           <!-- if Cosf play away -->
-
           @if (calendarLastMatch?.location==="Extérieur") {
 
-          <img
-            [src]="
-              nameTeam && nameTeam.name
-                ? '/images/' + nameTeam.name + '.png'
-                : ''
-            "
-            alt="{{ nameTeam?.name || '' }}"
-            class="w-24 h-24 rounded-full" />
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 w-full px-2 sm:px-4">
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-end">
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <span class="text-black font-serif text-xs sm:text-sm font-bold text-center">
+                  {{ nameTeam?.name || 'Équipe' }}
+                </span>
+                <img
+                  [src]="nameTeam && nameTeam.name ? '/images/' + nameTeam.name + '.png' : '/images/cosf_logo.jpeg'"
+                  [alt]="nameTeam?.name || 'Team'"
+                  class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
+              </div>
+            </div>
 
-          <div class="font-serif text-black text-4xl font-bold">
-            {{ calendarLastMatch?.scoreAway }}
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+              <div class="font-serif text-black text-xl sm:text-4xl font-bold text-center min-w-[2rem]">
+                {{ calendarLastMatch?.scoreAway }}
+              </div>
+
+              <div class="text-black font-serif text-lg sm:text-2xl font-bold">VS</div>
+
+              <div class="font-serif text-black text-xl sm:text-4xl font-bold text-center min-w-[2rem]">
+                {{ calendarLastMatch?.scoreHome }}
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-start">
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <img [src]="'/images/cosf_logo.jpeg'" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
+                <span class="text-black font-serif text-xs sm:text-sm font-bold">COSF</span>
+              </div>
+            </div>
           </div>
-
-          <div class="text-black font-serif text-2xl font-bold mx-4">VS</div>
-
-          <div class="font-serif text-black text-4xl font-bold">
-            {{ calendarLastMatch?.scoreHome }}
-          </div>
-
-          <img
-            [src]="'/images/cosf_logo.jpeg'"
-            class="w-24 h-24 rounded-full" />
           }
         </div>
       </div>
     </div>
     } @if (isNextMatch) {
     <div class="">
-      <h2 class="text-3xl font-serif mb-4 text-center justify-center p-4">
+      <h2 class="text-2xl sm:text-3xl font-serif mb-4 text-center justify-center p-4">
         Prochain Match
       </h2>
       <div
-        class="flex bg-gray-300 text-white rounded-lg overflow-hidden shadow-lg w-full max-w-7xl mx-auto">
+        class="flex flex-col sm:flex-row bg-gray-300 text-white rounded-lg sm:rounded-full gap-0 sm:gap-3 overflow-hidden shadow-lg w-full sm:max-w-7xl mx-2 sm:mx-auto">
         <!-- Date -->
-        <div class="flex flex-col w-1/4">
+        <div class="flex flex-col w-full sm:w-1/4">
           <div
-            class="flex flex-col bg-black text-white text-center justify-center items-center p-4">
+            class="flex flex-col bg-black text-white text-center justify-center items-center p-3 sm:p-4 rounded-t-lg sm:rounded-none">
             <div
               class="flex flex-row items-center justify-center w-full flex-1">
-              <img src="/images/ffbb.jpg" class="w-12 h-12 rounded-full" />
-              <h2 class="font-serif font-bold ml-2">FFBB</h2>
+              <img src="/images/ffbb.jpg" class="w-8 h-8 sm:w-12 sm:h-12 rounded-full" />
+              <h2 class="font-serif font-bold ml-2 text-sm sm:text-base">FFBB</h2>
             </div>
           </div>
           <div
-            class="bg-white text-black font-serif text-center justify-center items-center p-4">
+            class="bg-white text-black font-serif text-center justify-center items-center p-3 sm:p-4">
             <div
-              class="text-2xl font-bold mt-2 flex-1 flex items-center justify-center">
+              class="text-lg sm:text-2xl font-bold mt-1 sm:mt-2 flex-1 flex items-center justify-center">
               {{ calendarNextMatch?.matchDate | date : "dd/MM/yyyy" }}
             </div>
             <div
-              class="text-2xl font-bold mt-2 flex-1 flex items-center justify-center">
+              class="text-lg sm:text-2xl font-bold mt-1 sm:mt-2 flex-1 flex items-center justify-center">
               {{ calendarNextMatch?.matchDate | date : "HH:mm" }}
             </div>
           </div>
         </div>
 
         <!-- game day -->
-        <div class="flex items-center justify-evenly w-2/3">
+        <div class="flex items-center justify-center w-full sm:w-2/3 p-3 sm:p-0 bg-gray-300 rounded-b-lg sm:rounded-none">
           <!-- if Cosf play home -->
           @if (calendarNextMatch?.location==="Domicile") {
 
-          <img
-            [src]="'/images/cosf_logo.jpeg'"
-            class="w-16 h-16 rounded-full" />
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 w-full px-2 sm:px-4">
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-start">
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <img [src]="'/images/cosf_logo.jpeg'" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
+                <span class="text-black font-serif text-xs sm:text-sm font-bold">COSF</span>
+              </div>
+            </div>
 
-          <div class="text-black font-serif text-2xl font-bold mx-4">VS</div>
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+              <div class="text-black font-serif text-lg sm:text-2xl font-bold">VS</div>
+            </div>
 
-          <img
-            [src]="
-              nameTeam && nameTeam.name
-                ? '/images/' + nameTeam.name + '.png'
-                : ''
-            "
-            alt="{{ nameTeam?.name || '' }}"
-            class="w-24 h-24 rounded-full" />
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-end">
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <img
+                  [src]="nameTeamNext && nameTeamNext.name ? '/images/' + nameTeamNext.name + '.png' : '/images/cosf_logo.jpeg'"
+                  [alt]="nameTeamNext?.name || 'Team'"
+                  class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
+                <span class="text-black font-serif text-xs sm:text-sm font-bold text-center">
+                  {{ nameTeamNext?.name || 'Équipe' }}
+                </span>
+              </div>
+            </div>
+          </div>
           }
 
           <!-- if Cosf play away -->
-
           @if (calendarNextMatch?.location==="Extérieur") {
 
-          <img
-            [src]="
-              nameTeam && nameTeam.name
-                ? '/images/' + nameTeam.name + '.png'
-                : ''
-            "
-            alt="{{ nameTeam?.name || '' }}"
-            class="w-24 h-24 rounded-full" />
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 w-full px-2 sm:px-4">
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-start">
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <span class="text-black font-serif text-xs sm:text-sm font-bold text-center">
+                  {{ nameTeamNext?.name || 'Équipe' }}
+                </span>
+                <img
+                  [src]="nameTeamNext && nameTeamNext.name ? '/images/' + nameTeamNext.name + '.png' : '/images/cosf_logo.jpeg'"
+                  [alt]="nameTeamNext?.name || 'Team'"
+                  class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
+              </div>
+            </div>
 
-          <div class="text-black font-serif text-2xl font-bold mx-4">VS</div>
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+              <div class="text-black font-serif text-lg sm:text-2xl font-bold">VS</div>
+            </div>
 
-          <img
-            [src]="'/images/cosf_logo.jpeg'"
-            class="w-24 h-24 rounded-full" />
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-end">
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <img [src]="'/images/cosf_logo.jpeg'" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
+                <span class="text-black font-serif text-xs sm:text-sm font-bold">COSF</span>
+              </div>
+            </div>
+          </div>
           }
         </div>
       </div>
@@ -169,8 +207,8 @@
   </div>
 
   <div
-    class="bg-gray-200 flex flex-col gap-14 w-full items-center justify-center h-full p-5">
-    <div class="font-serif text-5xl">
+    class="bg-gray-200 flex flex-col gap-8 sm:gap-14 w-full items-center justify-center h-full p-4 sm:p-5">
+    <div class="font-serif text-2xl sm:text-5xl text-center">
       <span class="font-bold"> SUIVEZ-NOUS</span>
       <span> SUR LES RESEAUX SOCIAUX</span>
     </div>
@@ -178,12 +216,13 @@
       <a
         href="https://www.instagram.com/cosf_basket/"
         target="_blank"
-        class="cursor-pointer">
-        <img src="/images/instagram.jpeg" class="w-10 h-10 mr-4 rounded-full" />
+        class="cursor-pointer flex items-center hover:opacity-80 transition-opacity">
+        <img src="/images/instagram.jpeg" class="w-8 h-8 sm:w-10 sm:h-10 mr-2 sm:mr-4 rounded-full" />
+        <span class="font-serif text-sm sm:text-base">&#64;cosf_basket</span>
       </a>
     </div>
-    <div>
-      <img src="/images/cosf_pp.jpg" alt="" class="max-h-[500px] w-full" />
+    <div class="w-full flex justify-center">
+      <img src="/images/cosf_pp.jpg" alt="" class="max-h-[300px] sm:max-h-[500px] w-full max-w-4xl object-contain" />
     </div>
   </div>
   
