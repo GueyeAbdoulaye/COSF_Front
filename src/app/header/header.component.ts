@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { lucideMenu, lucideInstagram } from '@ng-icons/lucide';
-import { HlmIconDirective } from '@spartan-ng/helm/icon';
+import { MenuBurgerComponent } from "../menu-burger/menu-burger.component";
 
 @Component({
   selector: 'app-header',
-  imports: [NgIconComponent, HlmIconDirective, RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, MenuBurgerComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
-  providers: [provideIcons({ lucideMenu, lucideInstagram })]
+  styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
 

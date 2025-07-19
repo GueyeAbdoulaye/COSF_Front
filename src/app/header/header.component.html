@@ -1,31 +1,53 @@
-<div class="bg-black text-white p-4 shadow-md">
-  <div class="flex items-center justify-between">
+<nav class="sticky top-0 bg-black text-white p-2 sm:p-4 shadow-md z-40">
+  <div class="flex justify-between items-center relative">
     <!-- Left side - Menu burger -->
-    <div class="flex gap-5 items-center  space-x-6">
-      <div class="flex items-center justify-center cursor-pointer">
-        <ng-icon hlm size='lg' name="lucideMenu" />
-      </div>
-      
-      <!-- Menu items -->
-      <nav class="hidden md:flex space-x-6 text-lg font-bold">
-        <div class="cursor-pointer hover:text-gray-300 transition-colors" [routerLink]="['/calendrier']" routerLinkActive="text-gray-300">Calendrier</div>
-        <div class="cursor-pointer hover:text-gray-300 transition-colors" [routerLink]="['/classement']" routerLinkActive="text-gray-300">Classement</div>
+
+    <div class="flex gap-2 sm:gap-5 items-center space-x-2 sm:space-x-6">
+      <app-menu-burger></app-menu-burger>
+      <!-- Menu items - Hidden on mobile, shown on larger screens -->
+      <nav
+        class="hidden md:flex space-x-3 sm:space-x-6 text-base sm:text-lg font-bold">
+        <div
+          class="cursor-pointer hover:text-gray-300 transition-colors"
+          [routerLink]="['/calendrier']"
+          routerLinkActive="text-gray-300">
+          Calendrier
+        </div>
+        <div
+          class="cursor-pointer hover:text-gray-300 transition-colors"
+          [routerLink]="['/classement']"
+          routerLinkActive="text-gray-300">
+          Classement
+        </div>
       </nav>
     </div>
 
     <!-- Center - Logo and club name -->
-    <div class="flex  items-center justify-center mr-48 cursor-pointer" [routerLink]="['/']">
-      <img src="/images/cosf_logo.jpeg" class="w-16 h-16  rounded-full" />
+    <div
+      class="flex items-center justify-center mr-12 sm:mr-48 cursor-pointer"
+      [routerLink]="['/']">
+      <img
+        src="/images/cosf_logo.jpeg"
+        class="w-12 h-12 sm:w-16 sm:h-16 rounded-full" />
 
-      <h1 class="text-1xl font-bold">COSF</h1>
+      <h1 class="text-lg sm:text-xl font-bold ml-1 sm:ml-2">COSF</h1>
     </div>
 
     <!-- Right side - Instagram and Boutique -->
-    <div class="flex items-center justify-center space-x-4 mr-6">
-      <a href="https://www.instagram.com/cosf_basket/" target="_blank" class="cursor-pointer">
-        <img src="/images/instagram.jpeg" class="w-10 h-10 mr-4 rounded-full" />
+    <div
+      class="flex items-center justify-center space-x-2 sm:space-x-4 mr-2 sm:mr-6">
+      <a
+        href="https://www.instagram.com/cosf_basket/"
+        target="_blank"
+        class="cursor-pointer">
+        <img
+          src="/images/instagram.jpeg"
+          class="w-8 h-8 sm:w-10 sm:h-10 mr-2 sm:mr-4 rounded-full" />
       </a>
-      <div class="cursor-pointer hover:text-gray-300 transition-colors text-lg font-bold">Boutique</div>
+      <div
+        class="cursor-pointer hover:text-gray-300 transition-colors text-sm sm:text-lg font-bold">
+        Boutique
+      </div>
     </div>
   </div>
-</div>
+</nav>

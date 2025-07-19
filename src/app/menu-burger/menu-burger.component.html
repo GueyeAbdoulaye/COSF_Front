@@ -1,0 +1,69 @@
+<div class="burger-menu-container relative">
+  <!-- Burger Button -->
+  <button 
+    class="flex items-center justify-center cursor-pointer p-1 sm:p-2 rounded-md hover:bg-gray-700 transition-colors duration-200 min-w-[40px] min-h-[40px] sm:min-w-[44px] sm:min-h-[44px]"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="isMenuOpen"
+    aria-label="Menu de navigation">
+    <mat-icon class="text-white text-xl sm:text-2xl">{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+  </button>
+
+  <!-- Backdrop/Overlay - grayed out background -->
+  <div 
+    class="fixed inset-0 bg-black bg-opacity-50 z-40"
+    [class.hidden]="!isMenuOpen"
+    (click)="closeMenu()">
+  </div>
+
+  <!-- Dropdown Menu -->
+  <div 
+    class="fixed sm:top-20 top-16  left-0 right-0 w-full bg-white shadow-lg border-b border-gray-200 z-50 transform transition-all duration-700 ease-in-out max-h-[calc(100vh-5rem)] overflow-y-auto"
+    [class.opacity-0]="!isMenuOpen"
+    [class.opacity-100]="isMenuOpen"
+    [class.pointer-events-none]="!isMenuOpen"
+    [class.translate-y-[-10px]]="!isMenuOpen"
+    [class.translate-y-0]="isMenuOpen">
+    
+    <!-- Menu Items -->
+    <nav class="py-2 sm:py-4 px-2 sm:px-4">
+      <!-- Quick Access Home Link -->
+      <div class="mb-4 sm:mb-6 px-1 sm:px-2">
+        <a 
+          [routerLink]="'/'"
+          routerLinkActive="bg-blue-600 text-white"
+          class="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-150 cursor-pointer rounded-lg text-sm sm:text-base"
+          (click)="onMenuItemClick()">
+          <mat-icon class="text-white text-base sm:text-lg">home</mat-icon>
+          <span class="font-medium">Accueil</span>
+        </a>
+      </div>
+
+      <!-- Grid layout responsive -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+        
+        <!-- Loop through each section -->
+        <div *ngFor="let section of menuSections; trackBy: trackBySection" class="space-y-1 sm:space-y-2">
+          <!-- Section Title -->
+          <h3 class="text-xs sm:text-sm font-bold text-gray-800 uppercase tracking-wide px-2 py-1 border-b border-gray-200 mb-2 sm:mb-3">
+            {{ section.title }}
+          </h3>
+          
+          <!-- Section Items -->
+          <div class="space-y-1">
+            <a 
+              *ngFor="let item of section.items; trackBy: trackByRoute"
+              [routerLink]="item.route"
+              routerLinkActive="bg-blue-50 text-blue-600 border-l-3 border-blue-600"
+              class="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-150 cursor-pointer rounded-lg"
+              (click)="onMenuItemClick()">
+              <mat-icon class="text-gray-500 text-base sm:text-lg">{{ item.icon }}</mat-icon>
+              <span class="text-xs sm:text-sm font-medium">{{ item.label }}</span>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </nav>
+
+  </div>
+</div>

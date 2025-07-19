@@ -1,12 +1,13 @@
+import "./chunk-2O4WY5GE.js";
 import {
   MatCommonModule,
   Platform
-} from "./chunk-BBXWA7LC.js";
-import "./chunk-X2VJQMUT.js";
-import "./chunk-TPNSU7SI.js";
+} from "./chunk-LXCWTVJG.js";
+import "./chunk-36M5H7T5.js";
+import "./chunk-KHWLF2TK.js";
 import {
   DOCUMENT
-} from "./chunk-XWWR74KO.js";
+} from "./chunk-7U3LORDI.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -29,16 +30,8 @@ import {
   ɵɵprojection,
   ɵɵprojectionDef,
   ɵɵqueryRefresh
-} from "./chunk-GQCRKYRD.js";
+} from "./chunk-YPVXV7KQ.js";
 import "./chunk-WDMUDEB6.js";
-
-// node_modules/@angular/cdk/fesm2022/scrolling-BkvA05C8.mjs
-var RtlScrollAxisType;
-(function(RtlScrollAxisType2) {
-  RtlScrollAxisType2[RtlScrollAxisType2["NORMAL"] = 0] = "NORMAL";
-  RtlScrollAxisType2[RtlScrollAxisType2["NEGATED"] = 1] = "NEGATED";
-  RtlScrollAxisType2[RtlScrollAxisType2["INVERTED"] = 2] = "INVERTED";
-})(RtlScrollAxisType || (RtlScrollAxisType = {}));
 
 // node_modules/@angular/cdk/fesm2022/platform.mjs
 var PlatformModule = class _PlatformModule {
