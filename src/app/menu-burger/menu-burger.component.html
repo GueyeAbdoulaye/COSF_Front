@@ -1,11 +1,8 @@
-<div class="burger-menu-container relative">
+<div class="relative items-center justify-evenly">
   <!-- Burger Button -->
-  <button 
-    class="flex items-center justify-center cursor-pointer p-1 sm:p-2 rounded-md hover:bg-gray-700 transition-colors duration-200 min-w-[40px] min-h-[40px] sm:min-w-[44px] sm:min-h-[44px]"
-    (click)="toggleMenu()"
-    [attr.aria-expanded]="isMenuOpen"
-    aria-label="Menu de navigation">
-    <mat-icon class="text-white text-xl sm:text-2xl">{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+  <button mat-mini-fab class="!bg-white !text-black  hover:!bg-gray-500 hover:!text-white transition-colors duration-200 rounded-lg "
+    (click)="toggleMenu()">
+    <mat-icon class="items-center justify-center">menu</mat-icon>
   </button>
 
   <!-- Backdrop/Overlay - grayed out background -->
@@ -17,7 +14,7 @@
 
   <!-- Dropdown Menu -->
   <div 
-    class="fixed sm:top-20 top-16  left-0 right-0 w-full bg-white shadow-lg border-b border-gray-200 z-50 transform transition-all duration-700 ease-in-out max-h-[calc(100vh-5rem)] overflow-y-auto"
+    class="fixed sm:top-20 top-14 left-0 right-0 w-full bg-white  border-b border-gray-200 z-50 transform transition-all duration-700 ease-in-out max-h-[calc(100vh-5rem)] overflow-y-auto"
     [class.opacity-0]="!isMenuOpen"
     [class.opacity-100]="isMenuOpen"
     [class.pointer-events-none]="!isMenuOpen"
@@ -31,7 +28,7 @@
         <a 
           [routerLink]="'/'"
           routerLinkActive="bg-blue-600 text-white"
-          class="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-150 cursor-pointer rounded-lg text-sm sm:text-base"
+          class="flex items-center justify-center max-w-32 px-2 sm:px-2 py-2 sm:py-3 bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-150 cursor-pointer rounded-lg text-sm sm:text-base"
           (click)="onMenuItemClick()">
           <mat-icon class="text-white text-base sm:text-lg">home</mat-icon>
           <span class="font-medium">Accueil</span>
@@ -67,3 +64,4 @@
 
   </div>
 </div>
+

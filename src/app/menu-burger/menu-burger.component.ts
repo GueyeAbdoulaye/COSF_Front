@@ -1,7 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MatIcon } from '@angular/material/icon';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 
 interface MenuSection {
   title: string;
@@ -13,22 +15,24 @@ interface MenuItem {
   route: string;
   icon: string;
 }
-
 @Component({
   selector: 'app-menu-burger',
-  imports: [CommonModule, RouterLink, RouterLinkActive, MatIcon], 
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterLinkActive, MatButtonModule, MatDividerModule, MatIconModule], 
   templateUrl: './menu-burger.component.html',
   styleUrl: './menu-burger.component.scss'
 })
+
 export class MenuBurgerComponent implements OnDestroy {
 
   isMenuOpen = false;
 
-  menuSections: MenuSection[] = [
+  menuSections: MenuSection[ ] = [
     {
       title: 'Le Club',
       items: [
-        { label: 'Histoire', route: '/histoire', icon: 'history' }
+        { label: 'Histoire', route: '/histoire', icon: 'history' },
+        { label: 'Effectif', route: '/effectif', icon: 'group' }
       ]
     },
     {
@@ -41,7 +45,7 @@ export class MenuBurgerComponent implements OnDestroy {
     {
       title: 'Info',
       items: [
-        { label: 'Acces', route: '/access', icon: 'map_search' },
+        { label: 'Accès', route: '/access', icon: 'map_search' },
         { label: 'Contact', route: '/contact', icon: 'contact_mail' }
       ]
     }

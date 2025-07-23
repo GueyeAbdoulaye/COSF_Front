@@ -1,13 +1,14 @@
+import "./chunk-6EAXBEFM.js";
 import "./chunk-2O4WY5GE.js";
 import {
   MatCommonModule,
   Platform
-} from "./chunk-LXCWTVJG.js";
-import "./chunk-36M5H7T5.js";
-import "./chunk-KHWLF2TK.js";
+} from "./chunk-LIBT226Z.js";
+import "./chunk-SAYM3B4W.js";
+import "./chunk-QZDBAPOE.js";
 import {
   DOCUMENT
-} from "./chunk-7U3LORDI.js";
+} from "./chunk-2KQIXSBZ.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -30,25 +31,7 @@ import {
   ɵɵprojection,
   ɵɵprojectionDef,
   ɵɵqueryRefresh
-} from "./chunk-YPVXV7KQ.js";
-import "./chunk-WDMUDEB6.js";
-
-// node_modules/@angular/cdk/fesm2022/platform.mjs
-var PlatformModule = class _PlatformModule {
-  static ɵfac = function PlatformModule_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _PlatformModule)();
-  };
-  static ɵmod = ɵɵdefineNgModule({
-    type: _PlatformModule
-  });
-  static ɵinj = ɵɵdefineInjector({});
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(PlatformModule, [{
-    type: NgModule,
-    args: [{}]
-  }], null, null);
-})();
+} from "./chunk-TLFJCAK2.js";
 
 // node_modules/@angular/material/fesm2022/toolbar.mjs
 var _c0 = ["*", [["mat-toolbar-row"]]];

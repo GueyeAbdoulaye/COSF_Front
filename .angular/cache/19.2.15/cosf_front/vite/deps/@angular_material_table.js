@@ -1,3 +1,4 @@
+import "./chunk-AGZFHLKA.js";
 import {
   RtlScrollAxisType,
   getRtlScrollAxisType,
@@ -9,15 +10,15 @@ import {
   _isNumberValue,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-LXCWTVJG.js";
+} from "./chunk-LIBT226Z.js";
 import {
   BidiModule,
   Directionality
-} from "./chunk-36M5H7T5.js";
-import "./chunk-KHWLF2TK.js";
+} from "./chunk-SAYM3B4W.js";
+import "./chunk-QZDBAPOE.js";
 import {
   DOCUMENT
-} from "./chunk-7U3LORDI.js";
+} from "./chunk-2KQIXSBZ.js";
 import {
   BehaviorSubject,
   ChangeDetectionStrategy,
@@ -98,8 +99,7 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-YPVXV7KQ.js";
-import "./chunk-WDMUDEB6.js";
+} from "./chunk-TLFJCAK2.js";
 
 // node_modules/@angular/cdk/fesm2022/data-source-D34wiQZj.mjs
 var DataSource = class {
