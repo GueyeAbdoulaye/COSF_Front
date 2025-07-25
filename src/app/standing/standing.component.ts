@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { CosfService } from "../cosf.service";
 import { CommonModule } from "@angular/common";
 import { StandingDto } from "../dto/standing-dto";
-import { ImageGalleryComponent } from "../image-gallery/image-gallery.component";
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { TeamDto } from "../dto/teams-dto";
 import { Subscription } from "rxjs";
@@ -10,7 +9,7 @@ import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-standing",
-  imports: [CommonModule, ImageGalleryComponent, MatTableModule],
+  imports: [CommonModule, MatTableModule],
   templateUrl: "./standing.component.html",
   styleUrl: "./standing.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,

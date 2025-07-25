@@ -1,67 +1,31 @@
-<div class="bg-black min-h-fit w-full mt-auto p-4 sm:p-0">
-  <div class="items-center justify-center flex flex-col w-full h-auto">
-    <div class="flex flex-col sm:flex-row gap-6 sm:gap-10 w-full py-6 sm:py-8 items-center justify-center sm:justify-evenly">
-      <!-- Contact Section -->
-      <div class="flex flex-col gap-3 sm:gap-1 justify-center items-center w-full sm:w-1/3 p-2 sm:p-4">
-        <div class="flex flex-row gap-4 sm:gap-10 justify-center">
-          <img
-            src="/images/cosf_logo.jpeg"
-            class="w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-2" />
-          <img
-            src="/images/cosf_logo_off.jpeg"
-            class="w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-2" />
-        </div>
-        <div class="font-serif text-xs sm:text-sm text-white text-center">
-          62 Rue Carnot, 69190 Saint-Fons
-        </div>
-        <div class="font-serif text-xs sm:text-sm text-white text-center">
-          {{ "contact@saint-fons.com" }}
-        </div>
+<div
+  class="bg-black max-h-fit mt-auto p-4 sm:p-0 items-center justify-center flex flex-col w-full h-auto">
+  <div
+    class="flex flex-col sm:flex-row gap-6 sm:gap-10 w-full py-6 sm:py-8 items-center justify-center sm:justify-evenly">
+    <!-- Contact Section -->
+    <div
+      class="flex flex-col gap-3 sm:gap-1 justify-center items-center w-full sm:w-1/3 p-2 ">
+      <div class="flex flex-row gap-4 sm:gap-10 justify-center">
+        <img
+          src="/images/cosf_logo.jpeg"
+          class="w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-2" />
+        <img
+          src="/images/cosf_logo_off.jpeg"
+          class="w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-2" />
       </div>
-
-      <!-- Navigation Links -->
-      <div class="flex flex-col sm:flex-row w-full sm:w-2/3 gap-8 sm:gap-24 justify-center sm:justify-stretch items-center">
-        <div class="flex flex-col gap-3 sm:gap-2 text-center">
-          <div
-            class="font-serif text-black text-lg sm:text-2xl items-center justify-center bg-white cursor-pointer rounded-full w-28 sm:w-32 py-1 sm:py-0">
-            Le club
-          </div>
-                    <div
-            class="font-serif text-black text-lg sm:text-2xl items-center justify-center bg-white cursor-pointer rounded-full w-28 sm:w-32 py-1 sm:py-0">
-            Effectif
-          </div>
-        </div>
-        <div class="flex flex-col gap-3 sm:gap-2 text-center">
-          <div
-            class="font-serif text-black text-lg sm:text-2xl items-center justify-center bg-white cursor-pointer rounded-full w-28 sm:w-32 py-1 sm:py-0" 
-            [routerLink]="['/classement']" 
-            routerLinkActive="text-gray-400">
-            Classement
-          </div>
-          <div
-            class="font-serif text-black text-lg sm:text-2xl items-center justify-center bg-white cursor-pointer rounded-full w-28 sm:w-32 py-1 sm:py-0" 
-            [routerLink]="['/calendrier']" 
-            routerLinkActive="text-gray-400">
-            Calendrier
-          </div>
-        </div>
-
-                <div class="flex flex-col gap-3 sm:gap-2 text-center">
-          <div
-            class="font-serif text-black text-lg sm:text-2xl items-center justify-center bg-white cursor-pointer rounded-full w-28 sm:w-32 py-1 sm:py-0">
-            Contact
-          </div>
-          <div
-            class="font-serif text-black text-lg sm:text-2xl items-center justify-center bg-white cursor-pointer rounded-full w-28 sm:w-32 py-1 sm:py-0">
-            Accès
-          </div>
-        </div>
+      <div class="font-serif text-xs sm:text-sm text-white text-center">
+        14 rue des Falaise, 69190 Saint-Fons
+      </div>
+      <div class="font-serif text-xs sm:text-sm text-white text-center">
+        {{ "contact@saint-fons.com" }}
+      </div>
     </div>
   </div>
-  
+
   <!-- Bottom Section -->
   <div class="w-full border-t border-gray-600 py-4">
-    <div class="text-white text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 px-4">
+    <div
+      class="text-white text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 px-4">
       <div class="text-center sm:text-left">
         <p>© 2025 COSF Basket. Tous droits réservés</p>
       </div>

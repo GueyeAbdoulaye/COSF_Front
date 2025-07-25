@@ -32,7 +32,9 @@ export class MenuBurgerComponent implements OnDestroy {
       title: 'Le Club',
       items: [
         { label: 'Histoire', route: '/histoire', icon: 'history' },
-        { label: 'Effectif', route: '/effectif', icon: 'group' }
+        { label: 'Effectif', route: '/effectif', icon: 'group' },
+        { label: 'Inscription', route: '/inscription', icon: 'group' }
+
       ]
     },
     {

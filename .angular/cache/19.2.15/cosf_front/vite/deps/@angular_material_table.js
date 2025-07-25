@@ -1,16 +1,18 @@
-import "./chunk-AGZFHLKA.js";
 import {
   RtlScrollAxisType,
   getRtlScrollAxisType,
   supportsScrollBehavior
 } from "./chunk-2O4WY5GE.js";
+import "./chunk-AGZFHLKA.js";
 import {
-  MatCommonModule,
+  MatCommonModule
+} from "./chunk-SUT7PJNK.js";
+import {
   Platform,
   _isNumberValue,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-LIBT226Z.js";
+} from "./chunk-ZK5BOVCG.js";
 import {
   BidiModule,
   Directionality

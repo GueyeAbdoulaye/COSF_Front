@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Espacement global pour tous les composants sous le header fixe */
+body {
+  padding-top: 56px; /* Hauteur du header mobile */
+}
+
+@media (min-width: 640px) {
+  body {
+    padding-top: 80px; /* Hauteur du header desktop */
+  }
+}
+
+/* Z-index pour s'assurer que le header reste au-dessus de tout */
+nav[class*="fixed"] {
+  z-index: 9999 !important;
+}
+
+/* Alternative plus spécifique si nécessaire */
+.header-fixed {
+  z-index: 9999 !important;
+  position: fixed !important;
+  top: 0 !important;
+  width: 100% !important;
+}
+
+/* S'assurer que les éléments Material UI ne passent pas au-dessus */
+.mat-mdc-form-field,
+.mat-mdc-text-field-wrapper,
+.mat-mdc-floating-label,
+.mat-mdc-select-panel {
+  z-index: 1 !important;
+}
+
+/* Réduire le z-index des autres éléments potentiellement problématiques */
+.mat-mdc-dialog-container {
+  z-index: 1000 !important;
+}

@@ -5,6 +5,7 @@ import { environment } from "../environments/environment";
 import { TeamDto } from "./dto/teams-dto";
 import { StandingDto } from "./dto/standing-dto";
 import { CalendarDto } from "./dto/calendar-dto";
+import { ContactDto } from "./dto/contact-dto";
 
 @Injectable({
   providedIn: "root",
@@ -60,5 +61,10 @@ export class CosfService {
 
   public getNextMatch(): Observable<CalendarDto> {
     return this.http.get<CalendarDto>(`${this.apiServerUrl}/api/v1/calendar/next`);
+  }
+
+  //Service about Contact
+  public sendContactForm(contact: ContactDto): Observable<any> {
+    return this.http.post(`${this.apiServerUrl}/api/v1/contact`, contact);
   }
 }
