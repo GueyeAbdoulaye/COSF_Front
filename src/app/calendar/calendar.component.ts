@@ -4,12 +4,10 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  OnChanges,
-  SimpleChanges,
+
 } from "@angular/core";
 import { CalendarDto } from "../dto/calendar-dto";
 import { CosfService } from "../cosf.service";
-import { ImageGalleryComponent } from "../image-gallery/image-gallery.component";
 import { MatIconModule } from "@angular/material/icon";
 import { TeamDto } from "../dto/teams-dto";
 import { DatePipe } from "@angular/common";
@@ -17,7 +15,7 @@ import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-calendar",
-  imports: [ImageGalleryComponent, MatIconModule, DatePipe],
+  imports: [ MatIconModule, DatePipe],
   templateUrl: "./calendar.component.html",
   styleUrl: "./calendar.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
