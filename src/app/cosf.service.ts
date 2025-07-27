@@ -67,4 +67,9 @@ export class CosfService {
   public sendContactForm(contact: ContactDto): Observable<any> {
     return this.http.post(`${this.apiServerUrl}/api/v1/contact`, contact);
   }
+
+  //Service about Effectif
+  public getAllPlayers(): Observable<any> {
+    return this.http.get(`${this.apiServerUrl}/api/v1/joueurs/all`);
+  }
 }
