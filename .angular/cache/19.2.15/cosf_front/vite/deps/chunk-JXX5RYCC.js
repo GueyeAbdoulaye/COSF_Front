@@ -4,7 +4,7 @@ import {
   _bindEventWithOptions,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-ZK5BOVCG.js";
+} from "./chunk-T7GSIHI5.js";
 import {
   BidiModule
 } from "./chunk-SAYM3B4W.js";
@@ -2732,13 +2732,13 @@ var MatCommonModule = class _MatCommonModule {
 })();
 
 export {
-  normalizePassiveListenerOptions,
-  _getEventTarget,
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
+  _getEventTarget,
+  normalizePassiveListenerOptions,
   FocusMonitor,
   ObserversModule,
   _IdGenerator,
   MatCommonModule
 };
-//# sourceMappingURL=chunk-SUT7PJNK.js.map
+//# sourceMappingURL=chunk-JXX5RYCC.js.map

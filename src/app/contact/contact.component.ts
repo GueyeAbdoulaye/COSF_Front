@@ -43,17 +43,13 @@ export class ContactComponent implements OnInit {
 
   onSubmit(formGroupDirective: FormGroupDirective) {
     if (this.contactForm.valid) {
-      console.log("Form Submitted!", this.contactForm.value);
-
       this.service.sendContactForm(this.contactForm.value).subscribe({
         next: (response) => {
-          console.log("Contact form submitted successfully:", response);
           alert("Message envoyé avec succès !");
           // Optionally reset the form or show a success message
           formGroupDirective.resetForm(); // Reset the form group directive
         },
         error: (error) => {
-          console.error("Error submitting contact form:", error);
           alert("Une erreur est survenue lors de l'envoi.");
         },
       });

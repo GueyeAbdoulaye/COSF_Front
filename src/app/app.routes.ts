@@ -5,12 +5,13 @@ import { HomeComponent } from "./home/home.component";
 import { AccessComponent } from "./access/access.component";
 import { ContactComponent } from "./contact/contact.component";
 import { EffectifComponent } from "./effectif/effectif.component";
+import { LoginComponent } from "./login/login.component";
 
 export const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent, // Default route
-  },
+  // {
+  //   path: "",
+  //   component: HomeComponent, // Default route
+  // },
   {
     path: "calendrier",
     component: CalendarComponent,
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: "effectif",
     component: EffectifComponent,
+  },
+  {
+    path: "",
+    component: LoginComponent,  // Login route
   },
   {
     path: "**",
