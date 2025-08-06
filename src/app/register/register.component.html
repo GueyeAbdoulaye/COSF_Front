@@ -1,0 +1,100 @@
+<div
+  class="h-screen w-screen flex items-center justify-center inset-0 bg-black bg-opacity-50 z-40">
+  <!-- Container de login avec fond semi-transparent -->
+  <div
+    class="bg-white backdrop-blur-sm border border-white/20 rounded-xl shadow-2xl p-8 w-full max-w-md overflow-hidden">
+    <!-- Logo/Titre -->
+    <div class="text-center mb-8">
+      <img
+        src="/images/cosf_logo.jpeg"
+        alt="COSF Logo"
+        class="w-20 h-20 mx-auto mb-4 rounded-full" />
+      <h2 class="text-2xl font-bold text-gray-800 font-serif">Inscription</h2>
+      <p class="text-gray-600 mt-2">Creer votre Compte</p>
+    </div>
+
+    <!-- Formulaire de login -->
+    <form
+      #formGroupDirective="ngForm"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit(formGroupDirective)"
+      class="space-y-6">
+      <div class="flex flex-row">
+        <!-- Username -->
+        <mat-form-field class="w-full">
+          <mat-label>Prenom</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="username"
+            placeholder="Jean" />
+          @if (registerForm.get('username')?.hasError('required')) {
+          <mat-error>Le prenom est requis</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Lastname -->
+        <mat-form-field class="w-full">
+          <mat-label>Nom</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="lastname"
+            placeholder="Dupont" />
+          @if (registerForm.get('lastname')?.hasError('required')) {
+
+          <mat-error>Le nom est requis</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Email -->
+      <mat-form-field class="w-full">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="exemple@gmail.com" />
+        <mat-icon matSuffix>email</mat-icon>
+        @if (registerForm.get('email')?.hasError('required')) {
+        <mat-error>L'email est requis</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Mot de passe -->
+      <mat-form-field class="w-full">
+        <mat-label>Mot de passe</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          formControlName="password"
+          placeholder="••••••••"
+          autocomplete="current-password" />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hidePassword = !hidePassword">
+          <mat-icon>{{
+            hidePassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+        @if (registerForm.get('password')?.hasError('required')) {
+        <mat-error>Le mot de passe est requis</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Bouton de connexion -->
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="registerForm.invalid"
+        class="w-full !bg-green-700 hover:!bg-green-800 !text-white !font-semibold !py-3">
+        <mat-icon class="mr-2">login</mat-icon>
+        Creer
+      </button>
+    </form>
+  </div>
+</div>

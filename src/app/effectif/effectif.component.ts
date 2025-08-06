@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { JoueurCardComponent } from "../joueur-card/joueur-card.component";
-import { CosfService } from "../cosf.service";
 import { Subscription } from "rxjs";
+import { CosfService } from "../services/cosf.service";
 
 export interface PlayerDto {
   nom: string;

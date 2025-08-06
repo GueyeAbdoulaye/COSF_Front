@@ -27,14 +27,14 @@ export class MenuBurgerComponent implements OnDestroy {
 
   isMenuOpen = false;
 
-  menuSections: MenuSection[ ] = [
+  menuSections: MenuSection[] = [
     {
       title: 'Le Club',
       items: [
         { label: 'Histoire', route: '/histoire', icon: 'history' },
         { label: 'Effectif', route: '/effectif', icon: 'group' },
-        { label: 'Inscription', route: '/inscription', icon: 'group' }
-
+        { label: 'Inscription', route: '/inscription', icon: 'group' },
+        { label: 'Inscris', route: '/inscris', icon: 'group' }
       ]
     },
     {

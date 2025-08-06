@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { CalendarDto } from "../dto/calendar-dto";
-import { CosfService } from "../cosf.service";
 import { DatePipe } from "@angular/common";
 import { TeamDto } from "../dto/teams-dto";
 import { ImageGalleryComponent } from "../image-gallery/image-gallery.component";
 import { Subscription } from "rxjs";
+import { CosfService } from "../services/cosf.service";
 
 @Component({
   selector: "app-home",

@@ -1,0 +1,161 @@
+<div class="flex flex-col items-center justify-center w-full h-auto p-4 sm:p-8">
+  <h1 class="text-2xl sm:text-3xl font-bold font-serif mb-6 text-center">
+    Inscription au Club
+  </h1>
+
+  <form
+    #formGroupDirective="ngForm"
+    [formGroup]="inscriptionForm"
+    class="w-full max-w-2xl space-y-4">
+    <!-- Email -->
+
+    <div class="flex flex-col gap-1">
+      <!-- Nom et Prénom -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="lastName" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Prénom</mat-label>
+          <input matInput formControlName="firstName" />
+        </mat-form-field>
+      </div>
+
+      <!-- Sexe -->
+      <mat-form-field appearance="fill" class="w-1/6">
+        <mat-label>Sexe</mat-label>
+        <mat-select formControlName="sex">
+          <mat-option value="male">Homme</mat-option>
+          <mat-option value="female">Femme</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Date de naissance -->
+      <mat-form-field class="w-1/3" appearance="fill">
+        <mat-label>choisir une date</mat-label>
+        <input matInput [matDatepicker]="datepicker" formControlName="birthDate"/>
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button matButton matDatepickerCancel>annulé</button>
+            <button matButton="elevated" matDatepickerApply>Confirmer</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="exemple@gmail.com" />
+
+        @if (inscriptionForm.get('email')?.hasError('required')) {
+        <mat-error> L'email est requis </mat-error>
+        } @if (inscriptionForm.get('email')?.hasError('email')) {
+        <mat-error> Format d'email invalide </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- adresse -->
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Adresse</mat-label>
+        <input
+          matInput
+          formControlName="address"
+          placeholder="exemple, 123 rue de la Paix" />
+        @if (inscriptionForm.get('address')?.hasError('required')) {
+        <mat-error> L'adresse est requise </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- city & country -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Ville</mat-label>
+          <input matInput formControlName="city" placeholder="exemple, Paris" />
+          @if (inscriptionForm.get('city')?.hasError('required')) {
+          <mat-error> La ville est requise </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Pays</mat-label>
+          <input
+            matInput
+            formControlName="country"
+            placeholder="exemple, France" />
+          @if (inscriptionForm.get('country')?.hasError('required')) {
+          <mat-error> Le pays est requis </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Postal Code -->
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Code Postal</mat-label>
+        <input
+          matInput
+          formControlName="postalCode"
+          placeholder="exemple, 75001" />
+        @if (inscriptionForm.get('postalCode')?.hasError('required')) {
+        <mat-error> Le code postal est requis </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Téléphone -->
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Téléphone</mat-label>
+        <input
+          matInput
+          formControlName="phone"
+          placeholder="exemple, +33 6 12 34 56 78" />
+        @if (inscriptionForm.get('phone')?.hasError('required')) {
+        <mat-error> Le téléphone est requis </mat-error>
+        } @if (inscriptionForm.get('phone')?.hasError('pattern')) {
+        <mat-error> Format de téléphone invalide </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Mutated -->
+      <div class="flex flex-col sm:flex-row gap-6 items-center justify-center ">
+        <span > tu vas être muté pour la prochaine saison :</span>
+        <mat-form-field appearance="fill" >
+          <mat-select formControlName="mutated">
+            <mat-option value="yes">Oui</mat-option>
+            <mat-option value="no">Non</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Bouton d'inscription & Bouton de réinitialisation -->
+      <div class="flex flex-row justify-center gap-4 mt-6">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="inscriptionForm.invalid"
+          class="px-8 py-2"
+          (click)="onSubmit(formGroupDirective)">
+          S'inscrire
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          type="button"
+          (click)="resetForm()"
+          class="px-8 py-2">
+          Réinitialiser
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

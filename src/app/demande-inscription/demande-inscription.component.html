@@ -1,0 +1,72 @@
+<div
+  class="flex flex-col items-center justify-center w-full h-auto p-4 sm:p-8 maxh">
+  <h1
+    class="text-3xl sm:text-4xl font-bold font-serif mb-8 text-center text-green-800">
+    Demande d'inscription
+    <div
+      class="w-48 h-1 bg-gradient-to-r from-green-600 to-green-400 mx-auto mt-2 rounded-full"></div>
+  </h1>
+
+  <div
+    class="flex flex-col items-center justify-center w-full h-auto font-serif text-black text-sm sm:text-base ">
+    <div class="items-start flex gap-4 flex-col">
+      <div class="flex flex-row gap-4">
+        <div>nom:</div>
+        <div>{{ inscritDto.firstName }}</div>
+        <div>prénom:</div>
+        <div>{{ inscritDto.lastName }}</div>
+      </div>
+
+      <div class="flex flex-row gap-4">
+        <div>sexe:</div>
+        @if (inscritDto.sex ==="male") {
+        <div>Homme</div>
+        } @if (inscritDto.sex ==="female") {
+        <div>Femme</div>
+        }
+      </div>
+
+      <div class="flex flex-row gap-4">
+        <div>email:</div>
+        <div>{{ inscritDto.email }}</div>
+      </div>
+      <div class="flex flex-row gap-4">
+        <div>téléphone:</div>
+        <div>{{ inscritDto.phone }}</div>
+      </div>
+      <div class="flex flex-row gap-4">
+        <div>date de naissance:</div>
+        <div>{{ inscritDto.birthDate }}</div>
+      </div>
+
+      <div class="flex flex-row gap-4">
+        <div>adresse:</div>
+        <div>{{ inscritDto.address }}</div>
+      </div>
+
+      <div class="flex flex-row gap-4">
+        <div>code postal:</div>
+        <div>{{ inscritDto.postalCode }}</div>
+        <div>ville:</div>
+        <div>{{ inscritDto.city }}</div>
+      </div>
+
+      <div class="flex flex-row gap-4">
+        <div>pays:</div>
+        <div>{{ inscritDto.country }}</div>
+      </div>
+
+      @if (inscritDto.mutated === "yes") {
+      <div class="flex flex-row gap-4">
+        <div>muté:</div>
+        <div>oui</div>
+      </div>
+      } @else {
+      <div class="flex flex-row gap-4">
+        <div>muté:</div>
+        <div>non</div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

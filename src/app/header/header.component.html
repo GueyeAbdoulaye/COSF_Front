@@ -3,7 +3,7 @@
     <!-- Left side - Menu burger (mobile) + Navigation (desktop) -->
     <div class="flex items-center gap-2 sm:gap-4">
       <!-- Menu burger - visible sur mobile seulement -->
-      <div class="block ">
+      <div class="block">
         <app-menu-burger></app-menu-burger>
       </div>
 
@@ -56,9 +56,12 @@
           class="w-7 h-7 sm:w-9 sm:h-9 rounded-full" />
       </a>
 
-      <!-- Menu burger - visible sur desktop seulement -->
-      <div class="hidden sm:block">
-      </div>
+      @if ( isLoggedIn()) {
+      <button (click)="logout()" class="cursor-pointer">
+        <mat-icon> logout </mat-icon>
+
+      </button>
+      }
     </div>
   </div>
 </nav>

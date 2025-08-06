@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
-import { CosfService } from "../cosf.service";
 import { CommonModule } from "@angular/common";
 import { StandingDto } from "../dto/standing-dto";
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { TeamDto } from "../dto/teams-dto";
 import { Subscription } from "rxjs";
+import { CosfService } from "../services/cosf.service";
 
 
 @Component({

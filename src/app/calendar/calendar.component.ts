@@ -7,11 +7,11 @@ import {
 
 } from "@angular/core";
 import { CalendarDto } from "../dto/calendar-dto";
-import { CosfService } from "../cosf.service";
 import { MatIconModule } from "@angular/material/icon";
 import { TeamDto } from "../dto/teams-dto";
 import { DatePipe } from "@angular/common";
 import { Subscription } from "rxjs";
+import { CosfService } from "../services/cosf.service";
 
 @Component({
   selector: "app-calendar",
