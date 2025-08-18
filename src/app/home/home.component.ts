@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private cosfService: CosfService) {}
 
   ngOnInit(): void {
+
+    console.log("ENVIRONMENT VARIABLES:", (window as any).ENV);
     // Charger les deux matches en parallèle
     this.getLastMatch();
     this.getNextMatch();

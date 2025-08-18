@@ -85,7 +85,7 @@ export class StandingComponent implements OnInit, OnDestroy {
         this.cdr.markForCheck();
       },
       (error: any) => {
-        alert(error.message);
+        console.error(error.message);
       }
     );
     this.subscriptions.push(subscription);
