@@ -1,26 +1,24 @@
-# Étape 1 : build Angular avec le CLI local
+# --- Build Angular ---
 FROM node:20 AS build
 WORKDIR /app
 
-# installe les deps
-COPY package.json package-lock.json ./
+# deps (utilise le lock pour npm ci)
+COPY package*.json ./
 RUN npm ci
 
-# copie le code et build
+# sources + build -> on FORCE le dossier de sortie
 COPY . .
-# utilise le script "build" de package.json (qui appelle ng depuis node_modules/.bin)
-RUN npm run build -- --configuration=production
-#            ^^^^ important
+RUN npm run build -- --configuration=production --output-path=dist/app
 
-# Étape 2 : Nginx
+# --- Nginx ---
 FROM nginx:1.27-alpine
-# ⚠️ adapte le chemin dist selon ton angular.json
-# Angular 16/17: souvent dist/<nom-projet>/browser
-COPY --from=build /app/dist/cosf_front/browser /usr/share/nginx/html
-# ou si ton outputPath est dist/cosf_front : /app/dist/cosf_front
+# copie LE dossier qu'on vient de forcer
+COPY --from=build /app/dist/app/ /usr/share/nginx/html/
 
+# tes fichiers habituels
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x /usr/local/bin/entrypoint.sh
+
 EXPOSE 80
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
