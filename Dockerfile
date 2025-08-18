@@ -1,20 +1,14 @@
-FROM node:20 AS build
+# Stage 1: Build de l'application Angular
+FROM node:18-alpine as build
 WORKDIR /app
-COPY package.json ./
-RUN npm install
+COPY package*.json ./
+RUN npm ci --only=production
 COPY . .
-RUN npm run build
+RUN ng build --configuration=production
 
-
-FROM nginx:1.27-alpine
-
-COPY --from=build /app/dist/cosf_front /usr/share/nginx/html
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
+# Stage 2: Servir avec Nginx
+FROM nginx:alpine
+COPY --from=build /app/dist/ /usr/share/nginx/html/
+COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
-
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
