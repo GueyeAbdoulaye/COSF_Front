@@ -1,10 +1,20 @@
-FROM node:lts-alpine
-ENV NODE_ENV=production
-WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
+FROM node:20 AS build
+WORKDIR /app
+COPY package.json ./
+RUN npm install
 COPY . .
-EXPOSE 3000
-RUN chown -R node /usr/src/app
-USER node
-CMD ["npm", "start"]
+RUN npm run build
+
+
+FROM nginx:1.27-alpine
+
+COPY --from=build /app/dist/cosf_front /usr/share/nginx/html
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
