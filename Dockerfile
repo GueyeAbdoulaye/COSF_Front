@@ -1,14 +1,26 @@
-# Stage 1: Build de l'application Angular
-FROM node:18-alpine as build
+# Étape 1 : build Angular avec le CLI local
+FROM node:20 AS build
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY . .
-RUN ng build --configuration=production
 
-# Stage 2: Servir avec Nginx
-FROM nginx:alpine
-COPY --from=build /app/dist/ /usr/share/nginx/html/
-COPY nginx.conf /etc/nginx/nginx.conf
+# installe les deps
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# copie le code et build
+COPY . .
+# utilise le script "build" de package.json (qui appelle ng depuis node_modules/.bin)
+RUN npm run build -- --configuration=production
+#            ^^^^ important
+
+# Étape 2 : Nginx
+FROM nginx:1.27-alpine
+# ⚠️ adapte le chemin dist selon ton angular.json
+# Angular 16/17: souvent dist/<nom-projet>/browser
+COPY --from=build /app/dist/cosf_front/browser /usr/share/nginx/html
+# ou si ton outputPath est dist/cosf_front : /app/dist/cosf_front
+
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN chmod +x /usr/local/bin/entrypoint.sh
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
