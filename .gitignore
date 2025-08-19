@@ -1,2 +1,12 @@
-node_modules
+# Angular
+.angular/cache
+dist/
+coverage/
 
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Env
+.env
