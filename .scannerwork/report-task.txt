@@ -1,0 +1,6 @@
+projectKey=cosf-frontend
+serverUrl=http://localhost:9000
+serverVersion=25.8.0.112029
+dashboardUrl=http://localhost:9000/dashboard?id=cosf-frontend
+ceTaskId=ac10bd44-d2c6-4031-98fb-1fddec5a74d9
+ceTaskUrl=http://localhost:9000/api/ce/task?id=ac10bd44-d2c6-4031-98fb-1fddec5a74d9
