@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { InscriptionDto } from '../dto/inscriptionDto';
 import { CosfService } from '../services/cosf.service';
 import { Router } from '@angular/router';
+import { Constante } from '../../constante/constante';
 
 @Component({
   selector: 'app-demande-inscription',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class DemandeInscriptionComponent implements OnInit {
 
+  public readonly constante = Constante;
   @Input()
   inscritDto: InscriptionDto = {
     id: 0,

@@ -1,59 +1,118 @@
-# CosfFront
+# README – Frontend (Angular 20)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
+## 🧭 Aperçu
 
-## Development server
+Application web **COSF** (site de basket) basée sur **Angular 20**, **Angular Material**, **Tailwind CSS** et **Google Maps**. Authentification via JWT (consommation de l’API Spring Boot). Déployée derrière un reverse proxy (Caddy/Nginx) sur VPS. Supervision HTTP via **Blackbox Exporter** + **Grafana**.
 
-To start a local development server, run:
+## 🛠️ Stack
 
-```bash
-ng serve
+* Angular **20.x** (CLI, core, router, forms, material)
+* Tailwind CSS **3.x**
+* Google Maps (`@angular/google-maps`)
+* Tests : Karma/Jasmine
+
+## ✅ Prérequis
+
+* **Node.js** LTS (>= 20)
+* **npm** (>= 10)
+* Accès à l’API backend (URL + CORS OK)
+
+## ⚙️ Configuration (environnements)
+
+Créer/compléter :
+
+```
+src/environments/environment.ts
+src/environments/environment.prod.ts
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Exemple :
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```ts
+export const environment = {
+  production: false,
+  apiBaseUrl: 'https://api.cosf.fr',
+  googleMapsKey: 'YOUR_GOOGLE_MAPS_API_KEY',
+};
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+> ⚠️ Ne **committe** pas les clés en clair (utiliser variables d’environnement + CI/CD secrets si possible).
+
+## ▶️ Démarrer en local
 
 ```bash
-ng generate --help
+npm ci         # ou npm install
+npm start      # ng serve
 ```
 
-## Building
+Application : [http://localhost:4200](http://localhost:4200)
 
-To build the project run:
+## 🧪 Tests
 
 ```bash
-ng build
+npm test
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Rapport de couverture : `coverage/`
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 🏗️ Build prod
 
 ```bash
-ng test
+npm run build  # génère dist/cosf-front
 ```
 
-## Running end-to-end tests
+## 🐳 Docker (exemple rapide)
 
-For end-to-end (e2e) testing, run:
+Dockerfile (multi-étapes) – à adapter si tu utilises un serveur statique (Nginx/Caddy) :
 
-```bash
-ng e2e
+```dockerfile
+# Build
+FROM node:20-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Runtime (Nginx)
+FROM nginx:alpine
+COPY --from=build /app/dist/cosf-front/ /usr/share/nginx/html
+COPY ./deploy/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🔒 Accessibilité (extraits mis en place)
 
-## Additional Resources
+* **Skip link** + focus sur `<main>` à chaque navigation ; titres/landmarks sémantiques.
+* Contrastes conformes, navigation clavier complète, messages d’erreurs lisibles.
+* Composants dynamiques (dialog/snackbar) annoncés si besoin (`aria-live`).
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📡 Monitoring & SLO
+
+* Supervision via **Blackbox Exporter** (HTTP 2xx) → panels Grafana.
+* Cible : **disponibilité ≥ 99,5 %** ; **p95 latence < 800 ms** côté front.
+
+## 🔁 CI/CD (exemple GitHub Actions)
+
+```yaml
+name: ci-front
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci && npm run build && npm test -- --watch=false
+      # Build/push image si nécessaire
+```
+
+## 📁 Structure (extrait)
+
+```
+src/
+  app/
+  assets/
+  environments/
+```

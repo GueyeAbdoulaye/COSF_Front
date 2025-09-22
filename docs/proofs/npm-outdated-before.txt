@@ -1,0 +1,20 @@
+Package                        Current   Wanted  Latest  Location                                    Depended by
+@angular-devkit/build-angular   20.1.6   20.2.0  20.2.0  node_modules/@angular-devkit/build-angular  COSF_Front
+@angular/animations             20.1.7   20.2.1  20.2.1  node_modules/@angular/animations            COSF_Front
+@angular/build                  20.1.6   20.2.0  20.2.0  node_modules/@angular/build                 COSF_Front
+@angular/cdk                    20.1.6   20.2.0  20.2.0  node_modules/@angular/cdk                   COSF_Front
+@angular/cli                    20.1.6   20.2.0  20.2.0  node_modules/@angular/cli                   COSF_Front
+@angular/common                 20.1.7   20.2.1  20.2.1  node_modules/@angular/common                COSF_Front
+@angular/compiler               20.1.7   20.2.1  20.2.1  node_modules/@angular/compiler              COSF_Front
+@angular/compiler-cli           20.1.7   20.2.1  20.2.1  node_modules/@angular/compiler-cli          COSF_Front
+@angular/core                   20.1.7   20.2.1  20.2.1  node_modules/@angular/core                  COSF_Front
+@angular/forms                  20.1.7   20.2.1  20.2.1  node_modules/@angular/forms                 COSF_Front
+@angular/google-maps            20.1.6   20.2.0  20.2.0  node_modules/@angular/google-maps           COSF_Front
+@angular/material               20.1.6   20.2.0  20.2.0  node_modules/@angular/material              COSF_Front
+@angular/platform-browser       20.1.7   20.2.1  20.2.1  node_modules/@angular/platform-browser      COSF_Front
+@angular/router                 20.1.7   20.2.1  20.2.1  node_modules/@angular/router                COSF_Front
+@ng-icons/core                 29.10.0  29.10.0  32.1.0  node_modules/@ng-icons/core                 COSF_Front
+jasmine-core                     5.4.0    5.4.0   5.9.0  node_modules/jasmine-core                   COSF_Front
+tailwind-merge                   2.6.0    2.6.0   3.3.1  node_modules/tailwind-merge                 COSF_Front
+tailwindcss                     3.4.17   3.4.17  4.1.12  node_modules/tailwindcss                    COSF_Front
+typescript                       5.8.3    5.8.3   5.9.2  node_modules/typescript                     COSF_Front
