@@ -9,13 +9,13 @@ import { AuthService } from '../../services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | import('@angular/router').UrlTree {
     if (this.authService.isLoggedIn()) {
       return true;
     }
-    this.router.createUrlTree(['/login'], {
+     // ⬇️ RENVOIE l'UrlTree (ne pas juste l'appeler)
+    return this.router.createUrlTree(['/login'], {
       queryParams: { returnUrl: state.url },
     });
-    return false;
   }
 }

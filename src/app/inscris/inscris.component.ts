@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { InscriptionDto } from '../dto/inscriptionDto';
 import { CosfService } from '../services/cosf.service';
-import { CardPlayerComponent } from "./cardPlayer/card-player";
 import { Router } from '@angular/router';
-import { DemandeInscriptionComponent } from "../demande-inscription/demande-inscription.component";
-import { DatePipe } from '@angular/common';
 
-@Component({
+@Component({ 
   selector: 'app-inscris',
   imports: [],
   templateUrl: './inscris.component.html',

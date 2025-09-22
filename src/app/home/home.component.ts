@@ -5,6 +5,7 @@ import { TeamDto } from "../dto/teams-dto";
 import { ImageGalleryComponent } from "../image-gallery/image-gallery.component";
 import { Subscription } from "rxjs";
 import { CosfService } from "../services/cosf.service";
+import { Constante } from "../../constante/constante";
 
 @Component({
   selector: "app-home",
@@ -13,6 +14,8 @@ import { CosfService } from "../services/cosf.service";
   styleUrl: "./home.component.scss",
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
+  public readonly constante = Constante;
   calendarLastMatch: CalendarDto | null = null;
   calendarNextMatch: CalendarDto | null = null;
   nameTeam?: TeamDto;

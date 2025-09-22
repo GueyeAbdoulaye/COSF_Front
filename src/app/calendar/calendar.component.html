@@ -1,10 +1,8 @@
-
-
 <div
   class="flex flex-col gap-4 sm:gap-6 justify-center items-center sm:p-4 w-full">
   <h2
     class="font-serif font-bold text-black text-2xl sm:text-3xl mb-4 sm:mb-6 text-center">
-    Calendrier
+    {{constante.TITLE.CALENDAR}}
   </h2>
   <div
     class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-2 sm:mt-4 w-full max-w-4xl">
@@ -12,27 +10,27 @@
       class="bg-black font-serif font-bold text-white text-sm sm:text-lg px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
       [disabled]="isLoading"
       (click)="getAllMatches()">
-      {{ isLoading ? 'Chargement...' : 'Tous les matchs' }}
+      {{ isLoading ? constante.MATCH.loading : constante.MATCH.all_matches }}
     </button>
     <button
       class="bg-black font-serif font-bold text-white text-sm sm:text-lg px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
       [disabled]="isLoading"
       (click)="getAllUpcomingMatches()">
-      {{ isLoading ? 'Chargement...' : 'Matchs à venir' }}
+      {{ isLoading ? constante.MATCH.loading : constante.MATCH.upcoming_matches }}
     </button>
     <button
       class="bg-black font-serif font-bold text-white text-sm sm:text-lg px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
       [disabled]="isLoading"
       (click)="getAllPlayedMatches()">
-      {{ isLoading ? 'Chargement...' : 'Matchs passés' }}
+      {{ isLoading ? constante.MATCH.loading : constante.MATCH.played_matches }}
     </button>
   </div>
 
   @if (isMatchNotComingUp) {
   <div
-    class="text-center mt-8 p-6 bg-gray-100  mb-5 rounded-lg  sm:mx-auto max-w-md">
+    class="text-center mt-8 p-6 bg-gray-100 mb-5 rounded-lg sm:mx-auto max-w-md">
     <div class="font-serif font-bold text-lg sm:text-xl">
-      Aucun match disponible pour le moment
+      {{constante.MATCH.no_matches}}
     </div>
   </div>
   } @for (match of listMatchs; track match.id || $index) {
@@ -46,7 +44,7 @@
           <img
             src="/images/ffbb.jpg"
             class="w-8 h-8 sm:w-12 sm:h-12 rounded-full" />
-          <h2 class="font-serif font-bold ml-2 text-sm sm:text-base">FFBB</h2>
+          <h2 class="font-serif font-bold ml-2 text-sm sm:text-base">{{constante.TEXT.ffbb}}</h2>
         </div>
       </div>
       <div
@@ -74,15 +72,18 @@
           class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-end">
           <!-- Mobile layout: nom au-dessus de l'icône -->
           <div class="flex flex-col items-center sm:hidden">
-            <span class="text-black font-serif text-xs font-bold text-center mb-1">COSF</span>
+            <span
+              class="text-black font-serif text-xs font-bold text-center mb-1"
+              >{{constante.TEXT.cosf}}</span
+            >
             <img
               [src]="'/images/cosf_logo.jpeg'"
               class="w-16 h-16 rounded-full" />
           </div>
-          
+
           <!-- Desktop layout: nom à côté de l'icône -->
           <div class="hidden sm:flex items-center gap-3">
-            <span class="text-black font-serif text-sm font-bold">COSF</span>
+            <span class="text-black font-serif text-sm font-bold">{{constante.TEXT.cosf}}</span>
             <img
               [src]="'/images/cosf_logo.jpeg'"
               class="w-20 h-20 rounded-full" />
@@ -110,19 +111,24 @@
           @if (getTeamFromCache(match.awaitTeamId)?.name) {
           <!-- Mobile layout: nom au-dessus de l'icône -->
           <div class="flex flex-col items-center sm:hidden">
-            <span class="text-black font-serif text-xs font-bold text-center mb-1">
+            <span
+              class="text-black font-serif text-xs font-bold text-center mb-1">
               {{ getTeamFromCache(match.awaitTeamId)?.name }}
             </span>
             <img
-              [src]="'/images/' + getTeamFromCache(match.awaitTeamId)?.name + '.png'"
+              [src]="
+                '/images/' + getTeamFromCache(match.awaitTeamId)?.name + '.png'
+              "
               [alt]="getTeamFromCache(match.awaitTeamId)?.name || 'Team'"
               class="w-16 h-16 rounded-full" />
           </div>
-          
+
           <!-- Desktop layout: icône et nom à côté -->
           <div class="hidden sm:flex items-center gap-3">
             <img
-              [src]="'/images/' + getTeamFromCache(match.awaitTeamId)?.name + '.png'"
+              [src]="
+                '/images/' + getTeamFromCache(match.awaitTeamId)?.name + '.png'
+              "
               [alt]="getTeamFromCache(match.awaitTeamId)?.name || 'Team'"
               class="w-20 h-20 rounded-full" />
             <span class="text-black font-serif text-sm font-bold text-center">
@@ -132,20 +138,23 @@
           } @else {
           <!-- Mobile layout: nom au-dessus de l'icône -->
           <div class="flex flex-col items-center sm:hidden">
-            <span class="text-black font-serif text-xs font-bold text-center mb-1">Équipe</span>
+            <span
+              class="text-black font-serif text-xs font-bold text-center mb-1"
+              >{{constante.TEXT.team}}</span
+            >
             <img
               src="/images/cosf_logo.jpeg"
               alt="Team"
               class="w-16 h-16 rounded-full" />
           </div>
-          
+
           <!-- Desktop layout: icône et nom à côté -->
           <div class="hidden sm:flex items-center gap-3">
             <img
               src="/images/cosf_logo.jpeg"
               alt="Team"
               class="w-20 h-20 rounded-full" />
-            <span class="text-black font-serif text-sm font-bold">Équipe</span>
+            <span class="text-black font-serif text-sm font-bold">{{constante.TEXT.team}}</span>
           </div>
           }
         </div>
@@ -162,38 +171,46 @@
           @if (getTeamFromCache(match.awaitTeamId)?.name) {
           <!-- Mobile layout: nom au-dessus de l'icône -->
           <div class="flex flex-col items-center sm:hidden">
-            <span class="text-black font-serif text-xs font-bold text-center mb-1">
+            <span
+              class="text-black font-serif text-xs font-bold text-center mb-1">
               {{ getTeamFromCache(match.awaitTeamId)?.name }}
             </span>
             <img
-              [src]="'/images/' + getTeamFromCache(match.awaitTeamId)?.name + '.png'"
+              [src]="
+                '/images/' + getTeamFromCache(match.awaitTeamId)?.name + '.png'
+              "
               [alt]="getTeamFromCache(match.awaitTeamId)?.name || 'Team'"
               class="w-16 h-16 rounded-full" />
           </div>
-          
+
           <!-- Desktop layout: nom et icône à côté -->
           <div class="hidden sm:flex items-center gap-3">
             <span class="text-black font-serif text-sm font-bold text-center">
               {{ getTeamFromCache(match.awaitTeamId)?.name }}
             </span>
             <img
-              [src]="'/images/' + getTeamFromCache(match.awaitTeamId)?.name + '.png'"
+              [src]="
+                '/images/' + getTeamFromCache(match.awaitTeamId)?.name + '.png'
+              "
               [alt]="getTeamFromCache(match.awaitTeamId)?.name || 'Team'"
               class="w-20 h-20 rounded-full" />
           </div>
           } @else {
           <!-- Mobile layout: nom au-dessus de l'icône -->
           <div class="flex flex-col items-center sm:hidden">
-            <span class="text-black font-serif text-xs font-bold text-center mb-1">Équipe</span>
+            <span
+              class="text-black font-serif text-xs font-bold text-center mb-1"
+              >{{constante.TEXT.team}}</span
+            >
             <img
               src="/images/cosf_logo.jpeg"
               alt="Team"
               class="w-16 h-16 rounded-full" />
           </div>
-          
+
           <!-- Desktop layout: nom et icône à côté -->
           <div class="hidden sm:flex items-center gap-3">
-            <span class="text-black font-serif text-sm font-bold">Équipe</span>
+            <span class="text-black font-serif text-sm font-bold">{{constante.TEXT.team}}</span>
             <img
               src="/images/cosf_logo.jpeg"
               alt="Team"
@@ -222,18 +239,21 @@
           class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-start">
           <!-- Mobile layout: nom au-dessus de l'icône -->
           <div class="flex flex-col items-center sm:hidden">
-            <span class="text-black font-serif text-xs font-bold text-center mb-1">COSF</span>
+            <span
+              class="text-black font-serif text-xs font-bold text-center mb-1"
+              >COSF</span
+            >
             <img
               [src]="'/images/cosf_logo.jpeg'"
               class="w-16 h-16 rounded-full" />
           </div>
-          
+
           <!-- Desktop layout: icône et nom à côté -->
           <div class="hidden sm:flex items-center gap-3">
             <img
               [src]="'/images/cosf_logo.jpeg'"
               class="w-20 h-20 rounded-full" />
-            <span class="text-black font-serif text-sm font-bold">COSF</span>
+            <span class="text-black font-serif text-sm font-bold">{{constante.TEXT.cosf}}</span>
           </div>
         </div>
       </div>

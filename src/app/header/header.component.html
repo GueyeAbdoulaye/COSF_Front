@@ -36,7 +36,7 @@
       </h1>
     </div>
 
-    <!-- Right side - Instagram + Boutique + Menu burger (desktop) -->
+    <!-- Right side - Instagram  Menu burger (desktop) -->
     <div class="flex items-center gap-2 sm:gap-4">
       <a
         href="https://www.facebook.com/sainfonniard/"
@@ -58,7 +58,7 @@
 
       @if ( isLoggedIn()) {
       <button (click)="logout()" class="cursor-pointer">
-        <mat-icon> logout </mat-icon>
+        <mat-icon> {{constante.BUTTONS.logout}} </mat-icon>
 
       </button>
       }

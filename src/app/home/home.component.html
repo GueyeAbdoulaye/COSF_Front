@@ -6,7 +6,7 @@
     @if (isLastMatch) {
     <div class="">
       <h2 class="text-2xl sm:text-3xl font-serif mb-4 text-center justify-center p-4">
-        Dernier Match
+        {{ constante.TEXT.lastGame }}
       </h2>
       <div
         class="flex flex-col sm:flex-row bg-gray-300 text-white rounded-lg sm:rounded-full gap-0 sm:gap-3 overflow-hidden shadow-lg w-full sm:max-w-7xl mx-2 sm:mx-auto">
@@ -114,7 +114,7 @@
     } @if (isNextMatch) {
     <div class="">
       <h2 class="text-2xl sm:text-3xl font-serif mb-4 text-center justify-center p-4">
-        Prochain Match
+        {{ constante.TEXT.nextGame }}
       </h2>
       <div
         class="flex flex-col sm:flex-row bg-gray-300 text-white rounded-lg sm:rounded-full gap-0 sm:gap-3 overflow-hidden shadow-lg w-full sm:max-w-7xl mx-2 sm:mx-auto">
@@ -147,7 +147,7 @@
           @if (calendarNextMatch?.location==="Domicile") {
 
           <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 w-full px-2 sm:px-4">
-            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-start">
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-end">
               <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
                 <img [src]="'/images/cosf_logo.jpeg'" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
                 <span class="text-black font-serif text-xs sm:text-sm font-bold">COSF</span>
@@ -175,7 +175,7 @@
           <!-- if Cosf play away -->
           @if (calendarNextMatch?.location==="Extérieur") {
 
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 w-full px-2 sm:px-4">
+          <div class="flex flex-col sm:flex-row items-center justify-betweens gap-4 sm:gap-6 w-full px-2 sm:px-4">
             <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-start">
               <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
                 <span class="text-black font-serif text-xs sm:text-sm font-bold text-center">
@@ -192,7 +192,7 @@
               <div class="text-black font-serif text-lg sm:text-2xl font-bold">VS</div>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-end">
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-center sm:justify-start">
               <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
                 <img [src]="'/images/cosf_logo.jpeg'" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
                 <span class="text-black font-serif text-xs sm:text-sm font-bold">COSF</span>

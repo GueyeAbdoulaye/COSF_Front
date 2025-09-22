@@ -1,6 +1,6 @@
 <div class="w-full items-center justify-center flex flex-col gap-4 p-4">
   <h1 class="text-2xl sm:text-3xl font-bold font-serif p-4 text-center">
-    Plan d'accès COSF
+   {{constante.TITLE.PLAN_ACCES}}
   </h1>
 </div>
 
@@ -15,33 +15,33 @@
     <div class="flex flex-row gap-3 sm:gap-5 text-lg sm:text-2xl items-center">
       <div>
         <button>
-          <mat-icon>location_on</mat-icon>
+          <mat-icon>{{constante.ACCESS.location}}</mat-icon>
         </button>
       </div>
-      <div class="font-serif">14 rue des falaises, 69190 Saint-Fons</div>
+      <div class="font-serif">{{constante.ACCESS.address}}</div>
     </div>
 
     <!-- Téléphone -->
     <div class="flex flex-row gap-3 sm:gap-5">
       <div>
         <button>
-          <mat-icon>call</mat-icon>
+          <mat-icon>{{constante.BUTTONS.call}}</mat-icon>
         </button>
       </div>
-      <div class="font-serif text-lg sm:text-2xl">09 83 03 12 55</div>
+      <div class="font-serif text-lg sm:text-2xl">{{constante.ACCESS.phone}}</div>
     </div>
 
     <!-- Transport -->
-    <div class="font-bold uppercase text-xl sm:text-2xl mt-4">En Transport</div>
+    <div class="font-bold uppercase text-xl sm:text-2xl mt-4">{{constante.ACCESS.transport}}</div>
     <span class="uppercase text-base font-serif sm:text-lg"
-      >Arrêt Cimetière de Saint-Fons</span
+      >{{constante.ACCESS.stop}}</span
     >
 
     <!-- Bus -->
     <div class="flex flex-row gap-3 sm:gap-5 text-lg sm:text-2xl items-center">
       <div>
         <button>
-          <mat-icon>directions_bus</mat-icon>
+          <mat-icon>{{constante.BUTTONS.directions_bus}}</mat-icon>
         </button>
       </div>
       <div class="font-serif flex flex-row gap-2">
@@ -60,7 +60,7 @@
     <div class="flex flex-row gap-3 sm:gap-5 text-lg sm:text-2xl items-center">
       <div>
         <button>
-          <mat-icon>tram</mat-icon>
+          <mat-icon>{{constante.BUTTONS.tram}}</mat-icon>
         </button>
       </div>
       <div class="font-serif flex flex-row gap-2">
@@ -92,8 +92,8 @@
   <!-- Bouton centré au-dessus de la carte -->
   <div class="absolute top-14 left-32 sm:left-1/2 transform -translate-x-1/2 z-10">
     <button (click)="openInGoogleMaps()" class="bg-gray-500 text-white py-1 px-4 rounded font-serif flex items-center gap-2 shadow-lg hover:bg-gray-800 transition-colors">
-      <mat-icon class="text-white">open_in_new</mat-icon>
-      <span>Ouvrir dans Google Maps</span>
+      <mat-icon class="text-white">{{constante.BUTTONS.open}}</mat-icon>
+      <span>{{constante.MAP.open_in_maps}}</span>
     </button>
   </div>
 </div>

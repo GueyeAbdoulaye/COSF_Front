@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'; // ✅ Import ajouté
+import { Constante } from '../../constante/constante';
 
 
 @Component({
@@ -14,6 +15,8 @@ import { MatTooltipModule } from '@angular/material/tooltip'; // ✅ Import ajou
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
+  public readonly constante = Constante;
 
   constructor(private authService: AuthService) {}
 
