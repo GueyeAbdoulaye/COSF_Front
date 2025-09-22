@@ -18,6 +18,7 @@ import {
   provideNativeDateAdapter,
 } from "@angular/material/core";
 import { Subscription } from "rxjs";
+import { Constante } from "../../constante/constante";
 
 @Component({
   selector: "app-inscription",
@@ -37,6 +38,8 @@ import { Subscription } from "rxjs";
   styleUrl: "./inscription.component.scss",
 })
 export class InscriptionComponent implements OnDestroy, OnInit {
+
+    public readonly constante = Constante;
   inscriptionForm: FormGroup = new FormGroup({});
   subscription: Subscription[] = [];
 

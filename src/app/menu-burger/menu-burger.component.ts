@@ -38,7 +38,7 @@ export class MenuBurgerComponent implements OnDestroy {
       ]
     },
     {
-      title: 'Saison 24/25',
+      title: 'Saison 25/26',
       items: [
         { label: 'Calendrier & Resultat', route: '/calendrier', icon: 'calendar_today' },
         { label: 'Classement', route: '/classement', icon: 'leaderboard' },

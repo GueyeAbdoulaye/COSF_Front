@@ -10,6 +10,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { CosfService } from "../services/cosf.service";
+import { Constante } from "../../constante/constante";
 
 @Component({
   selector: "app-contact",
@@ -23,6 +24,8 @@ import { CosfService } from "../services/cosf.service";
   styleUrl: "./contact.component.scss",
 })
 export class ContactComponent implements OnInit {
+
+  public readonly constante = Constante;
   contactForm: UntypedFormGroup = new UntypedFormGroup({});
 
   constructor(private fb: UntypedFormBuilder, private service: CosfService) {}

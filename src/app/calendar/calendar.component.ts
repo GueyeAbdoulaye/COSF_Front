@@ -12,6 +12,7 @@ import { TeamDto } from "../dto/teams-dto";
 import { DatePipe } from "@angular/common";
 import { Subscription } from "rxjs";
 import { CosfService } from "../services/cosf.service";
+import { Constante } from "../../constante/constante";
 
 @Component({
   selector: "app-calendar",
@@ -21,6 +22,9 @@ import { CosfService } from "../services/cosf.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent implements OnInit, OnDestroy {
+
+  public readonly constante = Constante;
+
   listMatchs: CalendarDto[] = [];
 
   // Cache teams by ID to avoid repeated API calls

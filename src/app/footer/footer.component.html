@@ -14,10 +14,10 @@
           class="w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-2" />
       </div>
       <div class="font-serif text-xs sm:text-sm text-white text-center">
-        14 rue des Falaise, 69190 Saint-Fons
+        {{constante.ACCESS.address}}
       </div>
       <div class="font-serif text-xs sm:text-sm text-white text-center">
-        {{ "contact@saint-fons.com" }}
+        {{constante.FOOTER.email}}
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
     <div
       class="text-white text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 px-4">
       <div class="text-center sm:text-left">
-        <p>© 2025 COSF Basket. Tous droits réservés</p>
+        <p>{{constante.FOOTER.terms}}</p>
       </div>
       <div class="flex justify-center sm:justify-end items-center">
         <a
@@ -37,7 +37,7 @@
           <img
             src="/images/instagram.jpeg"
             class="w-8 h-8 sm:w-10 sm:h-10 rounded-full" />
-          <span class="ml-2 text-xs sm:text-sm">&#64;cosf_basket</span>
+          <span class="ml-2 text-xs sm:text-sm">{{constante.FOOTER.instagram}}</span>
         </a>
       </div>
     </div>

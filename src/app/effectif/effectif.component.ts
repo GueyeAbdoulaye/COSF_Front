@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { JoueurCardComponent } from "../joueur-card/joueur-card.component";
 import { Subscription } from "rxjs";
 import { CosfService } from "../services/cosf.service";
+import { Constante } from "../../constante/constante";
 
 export interface PlayerDto {
   nom: string;
@@ -17,6 +18,7 @@ export interface PlayerDto {
   styleUrl: "./effectif.component.scss",
 })
 export class EffectifComponent implements OnInit, OnDestroy {
+  public readonly constante = Constante;
   listPlayers: PlayerDto[] = [];
 
   subscriptions: Subscription[] = [];
