@@ -2,7 +2,7 @@
 FROM node:20 AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 COPY . .
 RUN npm run build -- --configuration=production --output-path=dist/app
 
@@ -17,3 +17,4 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 EXPOSE 80
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
