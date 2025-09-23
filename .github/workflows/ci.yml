@@ -1,4 +1,4 @@
-name: COSF 
+name: COSF
 
 on:
   push:
@@ -34,14 +34,6 @@ jobs:
       - name: Checkout du dépôt
         uses: actions/checkout@v4
 
-      - name: Valider le tag généré
-        run: |
-          TAG="${{ needs.setup-docker-tag.outputs.docker_tag }}"
-          if [[ ! "$TAG" =~ ^[a-zA-Z0-9_.-]+$ ]]; then
-            echo "Invalid tag format: $TAG"
-            exit 1
-          fi
-
       - name: Connexion à GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -50,12 +42,26 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Activer Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
-      - name: Construire et pousser l'image Docker
-        uses: docker/build-push-action@v4
+      - name: Valider le tag généré
+        run: |
+          TAG="${{ needs.setup-docker-tag.outputs.docker_tag }}"
+          if [[ ! "$TAG" =~ ^[a-zA-Z0-9_.-]+$ ]]; then
+            echo "Invalid tag format: $TAG"
+            exit 1
+          fi
+
+      - name: Construire et pousser l'image Docker (avec cache)
+        uses: docker/build-push-action@v5
+        env:
+          # logs plus verbeux pendant le build
+          BUILDKIT_PROGRESS: plain
         with:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64/v8
-          tags: ghcr.io/gueyeabdoulaye/cosf_front:${{ needs.setup-docker-tag.outputs.docker_tag || 'latest' }}  
+          tags: ghcr.io/gueyeabdoulaye/cosf_front:${{ needs.setup-docker-tag.outputs.docker_tag }}
+          # --- cache buildx ---
+          cache-from: type=registry,ref=ghcr.io/gueyeabdoulaye/cosf_front:buildcache
+          cache-to: type=registry,ref=ghcr.io/gueyeabdoulaye/cosf_front:buildcache,mode=max
